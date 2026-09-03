@@ -77,6 +77,8 @@
   width: 162px;
   height: auto;
   flex-shrink: 0;
+  /* срезаем возможные чёрные углы у скринов-макетов телефонов */
+  border-radius: 28px;
 }
 .phone-row--framed img {
   border: 1px solid var(--color-line);
@@ -91,14 +93,22 @@
 }
 .tab {
   padding: 8px;
+  font-family: inherit;
   font-size: var(--text-sm);
   line-height: 18px;
   background: var(--color-line);
   color: var(--color-ink);
+  border: 0;
+  cursor: pointer;
 }
 .tab--active {
   background: var(--color-ink);
   color: var(--color-on-dark);
+}
+
+/* локально для кейса 1: маркер списка по верху, а не по центру */
+.case--top-markers .marker-list li {
+  align-items: flex-start;
 }
 
 /* ---- Сетка карточек 2×2 (цитаты команды / гипотезы / графики опроса) ---- */
@@ -131,4 +141,49 @@
   border-bottom: 0;
 }
 
-/* ---- Кнопка «наверх» — переопределений нет, живёт в components.css ---- */
+/* ---- Разворот картинки на весь экран ---- */
+.case .media-frame {
+  cursor: zoom-in;
+}
+.media-expand {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-8);
+  background: rgba(35, 35, 35, 0.55);
+  color: #fff;
+  cursor: zoom-in;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.media-frame:hover .media-expand,
+.media-expand:focus-visible {
+  opacity: 1;
+}
+.media-expand svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  background: rgba(20, 20, 20, 0.92);
+  cursor: zoom-out;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+

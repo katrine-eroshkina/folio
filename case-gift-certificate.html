@@ -189,15 +189,15 @@
             <img src="/src/img/case-gift-certificate/final-3.jpg" alt="" loading="lazy" />
           </div>
 
-          <!-- TODO (видео): положить файлы в public/media/ и раскрыть <video> ниже, удалив заглушку -->
-          <div class="media-placeholder" style="--ratio: 1800 / 1242">video placeholder</div>
-          <!--
-          <video class="media-frame" autoplay muted loop playsinline
-                 poster="/media/case-gift-anim-poster.jpg" style="--ratio: 1800 / 1242">
-            <source src="/media/case-gift-anim.webm" type="video/webm" />
-            <source src="/media/case-gift-anim.mp4" type="video/mp4" />
-          </video>
-          -->
+          <!-- Видео: положи файлы в public/media/ — case-gift-anim.webm, .mp4 и постер .jpg.
+               Пока файлов нет — просто пустая рамка. -->
+          <div class="media-frame" style="--ratio: 1800 / 1242">
+            <video autoplay muted loop playsinline preload="metadata"
+                   poster="/media/case-gift-anim-poster.jpg">
+              <source src="/media/case-gift-anim.webm" type="video/webm" />
+              <source src="/media/case-gift-anim.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
 
         <div class="case-block">
@@ -223,6 +223,7 @@
       </svg>
     </a>
 
+    {{> footer }}
     {{> secret }}
 
     <script type="module" src="/src/scripts/main.js"></script>

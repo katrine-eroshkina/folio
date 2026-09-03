@@ -21,6 +21,7 @@
 /* ---- Рамка под изображение/видео ----
    Пропорции задаются per-use: style="--ratio: 700 / 483". */
 .media-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: var(--ratio, 700 / 420);
   background: var(--color-surface);
@@ -215,8 +216,8 @@
 /* ---- Кнопка «наверх» (кейсы) ---- */
 .to-top {
   position: fixed;
-  /* ~32px от правого края контейнера; на узких экранах — 20px от края окна */
-  right: max(20px, calc((100vw - var(--container)) / 2 + 32px));
+  /* у края окна, рядом с полосой прокрутки */
+  right: 32px;
   bottom: 32px;
   z-index: 10;
   width: 40px;

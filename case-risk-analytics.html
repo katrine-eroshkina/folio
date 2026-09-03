@@ -9,7 +9,7 @@
   <body>
     {{> header }}
 
-    <main class="container case">
+    <main class="container case case--top-markers">
       <!-- ПОГРУЖЕНИЕ -->
       <section class="case-section">
         <div class="case-hero">
@@ -87,13 +87,15 @@
           <p class="text case-p"><strong>Выявленная проблема:</strong> Текущий интерфейс заставляет пользователя сначала совершить действие, а&nbsp;уже потом разбираться в&nbsp;его последствиях</p>
         </div>
 
-        <div class="case-block case-block--16">
+        <div class="case-block case-block--16" data-tabs>
           <div class="tab-row">
-            <span class="tab tab--active">Главная «ДО»</span>
-            <span class="tab">User Flow «ДО»</span>
+            <button type="button" class="tab tab--active" data-tab="0">Главная «ДО»</button>
+            <button type="button" class="tab" data-tab="1">User Flow «ДО»</button>
           </div>
           <div class="media-frame" style="--ratio: 700 / 536">
-            <img src="/src/img/case-risk-analytics/ux-audit.jpg" alt="" loading="lazy" />
+            <img data-tab-panel="0" src="/src/img/case-risk-analytics/ux-audit.jpg" alt="" loading="lazy" />
+            <!-- TODO: заменить на реальный скрин User Flow «ДО» (пока копия предыдущего) -->
+            <img data-tab-panel="1" src="/src/img/case-risk-analytics/ux-userflow.jpg" alt="" loading="lazy" hidden />
           </div>
         </div>
 
@@ -227,7 +229,6 @@
     </main>
 
     <nav class="case-nav container">
-      <a href="/index.html" class="link text">Вернуться к&nbsp;предыдущему</a>
       <a href="/case-gift-certificate.html" class="link text">Читать следующий кейс</a>
     </nav>
 
@@ -237,6 +238,7 @@
       </svg>
     </a>
 
+    {{> footer }}
     {{> secret }}
 
     <script type="module" src="/src/scripts/main.js"></script>
