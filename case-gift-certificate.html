@@ -3,15 +3,213 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Подарок начинается с оформления — кейс · Екатерина Ерошкина</title>
+    <title>Подарок начинается с&nbsp;оформления&nbsp;— кейс · Екатерина Ерошкина</title>
     {{> head }}
   </head>
   <body>
     {{> header }}
 
     <main class="container case">
-      <!-- Контент кейса 3 «Подарок начинается с оформления» — фаза 4 (ждём лимит Paper).
-           Здесь же видео вместо серой плашки (блок anim_1_2, 700×483) — фаза 5. -->
+      <!-- ПОГРУЖЕНИЕ -->
+      <section class="case-section">
+        <div class="case-hero">
+          <h1 class="heading-display">Подарок начинается с&nbsp;оформления</h1>
+          <p class="text case-hero-lead">
+            Исследовала пользовательский опыт и&nbsp;решения конкурентов, а&nbsp;затем переработала
+            сценарий покупки: добавила предпросмотр, лёгкую персонализацию, планирование
+            отправки
+          </p>
+          <div class="phone-row">
+            <img src="/src/img/case-gift-certificate/hero-1.jpg" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/hero-2.jpg" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/hero-3.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="case-hero-links">
+            <a href="#final" class="link text">Сразу к&nbsp;макетам (вниз)</a>
+          </div>
+        </div>
+
+        <h2 class="heading-display">Погружение</h2>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Контекст</h3>
+          <p class="text case-p">
+            Подарочный сертификат&nbsp;— эмоциональный подарок, но&nbsp;на&nbsp;Ozon сценарий покупки
+            выглядел как&nbsp;обычный выбор товара: без&nbsp;персонализации, понятного дарения и
+            ощущения праздника
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Проблема</h3>
+          <p class="text case-p">
+            Сценарий покупки сертификата на&nbsp;Ozon выглядит как&nbsp;обычная покупка товара и
+            не&nbsp;учитывает эмоциональную сторону
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Задача</h3>
+          <p class="text case-p">
+            Переработать сценарий покупки электронного сертификата на&nbsp;Ozon так, чтобы он
+            оставался простым в&nbsp;оформлении, но&nbsp;воспринимался как&nbsp;полноценный подарок
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Критерии успеха</h3>
+          <ul class="marker-list">
+            <li class="text">Большинство пользователей персонализируют сертификат</li>
+            <li class="text">Уменьшение вопросов об&nbsp;оформлении до&nbsp;и&nbsp;после оплаты</li>
+            <li class="text">Рост повторного использования сертификатов как&nbsp;подарка</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ИССЛЕДОВАНИЕ -->
+      <section class="case-section">
+        <h2 class="heading-display">Исследование</h2>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Анализ текущего сценария</h3>
+          <p class="text case-p">
+            Сейчас сертификат воспринимается как&nbsp;цифровой товар, а&nbsp;не&nbsp;как&nbsp;подарок
+          </p>
+          <div class="media-frame" style="--ratio: 700 / 450">
+            <img src="/src/img/case-gift-certificate/analysis.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Изучение отзывов</h3>
+          <p class="text case-p"><strong>Что&nbsp;я&nbsp;сделала:</strong> проанализировала отзывы, чтобы найти проблемы на&nbsp;разных этапах, от&nbsp;оформления до&nbsp;получения и&nbsp;использования сертификата</p>
+          <p class="text case-p"><strong>Зачем:</strong> нужно понять, что&nbsp;именно мешает этому сценарию работать как&nbsp;подарочному, я&nbsp;последовательно изучила отзывы, провела опрос и&nbsp;сравнила опыт других сервисов</p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод</h3>
+          <p class="text case-p"><strong>Дарение:</strong> непонятно, как&nbsp;отправить сертификат другому человеку и&nbsp;где найти его после покупки</p>
+          <p class="text case-p"><strong>Персонализация:</strong> не&nbsp;хватает возможности добавить пожелание и&nbsp;выбрать оформление</p>
+          <p class="text case-p"><strong>Прозрачность:</strong> важные ограничения и&nbsp;детали использования становятся понятны слишком поздно</p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Опрос пользователей</h3>
+          <p class="text case-p">
+            Проверила, насколько найденные проблемы распространены и&nbsp;что&nbsp;действительно
+            важно пользователям
+          </p>
+          <div class="quote-grid">
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">Где покупали</span>
+              <div class="media-frame" style="--ratio: 318 / 171">
+                <img src="/src/img/case-gift-certificate/survey-1.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">Насколько оценивают процесс</span>
+              <div class="media-frame" style="--ratio: 318 / 171">
+                <img src="/src/img/case-gift-certificate/survey-2.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">Что&nbsp;важно</span>
+              <div class="media-frame" style="--ratio: 318 / 171">
+                <img src="/src/img/case-gift-certificate/survey-3.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">Важна ли&nbsp;проверка данных</span>
+              <div class="media-frame" style="--ratio: 318 / 171">
+                <img src="/src/img/case-gift-certificate/survey-4.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод</h3>
+          <ul class="marker-list">
+            <li class="text"><strong>58.3%</strong> хотели добавить хотя бы&nbsp;минимальное персонализирование</li>
+            <li class="text"><strong>30,6%</strong> предпочитают быстрое оформление с&nbsp;готовыми вариантами</li>
+            <li class="text"><strong>&lt;80%</strong> хотят проверить данные и&nbsp;увидеть результат до&nbsp;оплаты</li>
+            <li class="text"><strong>13%</strong> не&nbsp;смогли найти сертификат после оплаты</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Бенчмарки</h3>
+          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> Проверила, как&nbsp;эти задачи решают сервисы, которые пользователи считают удобными</p>
+          <p class="text case-p"><strong>Почему взяла их:</strong> самые частоиспользуемые, судя по&nbsp;опросу и&nbsp;упоминаниях в&nbsp;отзывах</p>
+          <div class="logo-row">
+            <img src="/src/img/case-gift-certificate/bench-1.png" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/bench-2.png" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/bench-3.png" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/bench-4.png" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/bench-5.png" alt="" loading="lazy" />
+            <img src="/src/img/case-gift-certificate/bench-6.png" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Выводы</h3>
+          <ul class="marker-list">
+            <li class="text"><strong>6/6</strong> сервисов предлагают предпросмотр сертификата до&nbsp;оплаты</li>
+            <li class="text"><strong>5/6</strong> сервисов показывают проверку данных до&nbsp;оплаты и&nbsp;статус отправки</li>
+            <li class="text"><strong>4/6</strong> сервисов предлагают готовые варианты персонализации</li>
+            <li class="text"><strong>5/6</strong> сервисов поддерживают отложенную отправку</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ФИНАЛЬНЫЕ МАКЕТЫ -->
+      <section class="case-section" id="final">
+        <h2 class="heading-display">Финальные макеты</h2>
+
+        <div class="case-block case-block--16">
+          <p class="text case-p"><strong>Гипотеза&nbsp;1:</strong> Если разделить сценарии на&nbsp;быструю покупку и&nbsp;персонализацию, то&nbsp;сертификат будет удобен и&nbsp;для&nbsp;массовой покупки, и&nbsp;для&nbsp;личного подарка</p>
+          <p class="text case-p"><strong>Решение:</strong> Добавили экран выбора сценария после перехода из&nbsp;поиска или&nbsp;раздела на&nbsp;главной. Для&nbsp;каждого варианта показали его преимущества, чтобы пользователю было проще выбрать подходящий формат</p>
+          <div class="media-frame" style="--ratio: 700 / 426">
+            <img src="/src/img/case-gift-certificate/final-1.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block case-block--16">
+          <p class="text case-p"><strong>Гипотеза&nbsp;2:</strong> Если дать возможность персонализировать сертификат и&nbsp;заранее запланировать его отправку, он будет восприниматься как&nbsp;полноценный подарок и&nbsp;станет удобнее для&nbsp;праздников и&nbsp;особых событий</p>
+          <p class="text case-p"><strong>Решение:</strong> Добавили экран персонализации: здесь можно выбрать дизайн, написать пожелание и&nbsp;указать дату отправки подарка</p>
+          <div class="media-frame" style="--ratio: 700 / 650">
+            <img src="/src/img/case-gift-certificate/final-2.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block case-block--16">
+          <p class="text case-p"><strong>Гипотеза&nbsp;2:</strong> Если дать пользователю возможность увидеть, как&nbsp;будет выглядеть подарок до&nbsp;его отправки, то&nbsp;снизится тревожность при&nbsp;оформлении и&nbsp;количество ошибок</p>
+          <p class="text case-p"><strong>Решение:</strong> Дала возможность проверить подарок перед отправкой и&nbsp;сделали сам момент отправки особенным&nbsp;— сертификат появляется как&nbsp;настоящий подарок, упакованный в&nbsp;конверт</p>
+          <div class="media-frame" style="--ratio: 700 / 412">
+            <img src="/src/img/case-gift-certificate/final-3.jpg" alt="" loading="lazy" />
+          </div>
+
+          <!-- TODO (видео): положить файлы в public/media/ и раскрыть <video> ниже, удалив заглушку -->
+          <div class="media-placeholder" style="--ratio: 1800 / 1242">video placeholder</div>
+          <!--
+          <video class="media-frame" autoplay muted loop playsinline
+                 poster="/media/case-gift-anim-poster.jpg" style="--ratio: 1800 / 1242">
+            <source src="/media/case-gift-anim.webm" type="video/webm" />
+            <source src="/media/case-gift-anim.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод и&nbsp;рефлексия</h3>
+          <p class="text case-p">
+            Я&nbsp;поняла, что&nbsp;эмоциональность подарка&nbsp;— это не&nbsp;только визуал. Она появляется,
+            когда продукт берёт на&nbsp;себя заботу о&nbsp;деталях: подсказывает важные нюансы,
+            учитывает ограничения и&nbsp;помогает не&nbsp;ошибиться. Тогда пользователь может
+            сосредоточиться не&nbsp;на&nbsp;оформлении сертификата, а&nbsp;на&nbsp;самом подарке
+          </p>
+        </div>
+      </section>
     </main>
 
     <nav class="case-nav container">

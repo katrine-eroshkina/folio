@@ -1,0 +1,134 @@
+/* СТРАНИЦЫ КЕЙСОВ — раскладка секций и специфичные блоки. */
+
+.case {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-60); /* между крупными секциями */
+  padding-block: var(--space-60) 32px;
+}
+
+/* крупная секция: заголовок + блоки с шагом 32 */
+.case-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-32);
+  width: 100%;
+}
+.case-section--16 { gap: var(--space-16); }
+
+/* блок внутри секции: подзаголовок + текст, шаг 12 */
+.case-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  width: 100%;
+}
+.case-block--16 { gap: var(--space-16); }
+
+/* абзац кейса; лид перед списком — medium */
+.case-p { max-width: 600px; }
+.case-p + .case-p { margin-top: 8px; }
+.case-lead {
+  max-width: 600px;
+  font-weight: var(--weight-medium);
+}
+/* инлайновая метка внутри абзаца: «Что сделала:», «Решение:», «58.3%» */
+.case-p strong,
+.marker-list strong {
+  font-weight: var(--weight-medium);
+  color: var(--color-ink);
+}
+
+/* ---- Hero кейса ---- */
+.case-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  width: 100%;
+}
+.case-hero-lead {
+  max-width: 650px;
+  line-height: 22px;
+}
+.case-hero-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--color-muted);
+}
+
+/* ряд телефонных скринов в hero (case 2/3) */
+.phone-row {
+  display: flex;
+  gap: 11px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 32px 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+.phone-row img {
+  width: 162px;
+  height: auto;
+  flex-shrink: 0;
+}
+.phone-row--framed img {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-16);
+}
+
+/* ---- Таб-переключатели «Главная ДО» / «User Flow ДО» ---- */
+.tab-row {
+  display: flex;
+  gap: var(--space-16);
+  align-items: center;
+}
+.tab {
+  padding: 8px;
+  font-size: var(--text-sm);
+  line-height: 18px;
+  background: var(--color-line);
+  color: var(--color-ink);
+}
+.tab--active {
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+/* ---- Сетка карточек 2×2 (цитаты команды / гипотезы / графики опроса) ---- */
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  width: 100%;
+  align-items: start;
+}
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-16);
+  height: 100%;
+}
+.quote-card .heading-serif {
+  font-size: var(--text-h2);
+}
+/* карточка с картинкой-графиком: картинка упирается в низ, без нижней границы */
+.quote-card--media {
+  padding-bottom: 0;
+}
+.quote-card--media .media-frame {
+  border-bottom: 0;
+}
+
+/* ---- Кнопка «наверх» — переопределений нет, живёт в components.css ---- */

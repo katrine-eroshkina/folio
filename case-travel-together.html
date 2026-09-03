@@ -3,14 +3,262 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Как сделать совместное путешествие проще — кейс · Екатерина Ерошкина</title>
+    <title>Как&nbsp;сделать совместное путешествие проще&nbsp;— кейс · Екатерина Ерошкина</title>
     {{> head }}
   </head>
   <body>
     {{> header }}
 
     <main class="container case">
-      <!-- Контент кейса 2 «Как сделать совместное путешествие проще» — фаза 4 (ждём лимит Paper). -->
+      <!-- ПОГРУЖЕНИЕ -->
+      <section class="case-section">
+        <div class="case-hero">
+          <h1 class="heading-display">Как&nbsp;сделать совместное путешествие проще</h1>
+          <p class="text case-hero-lead">
+            Исследовала, как&nbsp;группы организуют совместные поездки, и&nbsp;нашла ключевые
+            барьеры на&nbsp;разных этапах&nbsp;— от&nbsp;выбора направления до&nbsp;взаиморасчётов. На&nbsp;их
+            основе спроектировала единый сценарий поездки внутри Т-Банка, связав
+            тревел-сервисы и&nbsp;совместные финансы
+          </p>
+          <div class="phone-row phone-row--framed">
+            <img src="/src/img/case-travel-together/hero-1.jpg" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/hero-2.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="case-hero-links">
+            <a href="#final" class="link text">Сразу к&nbsp;макетам (вниз)</a>
+            <a href="#" class="link text">Фигма</a>
+          </div>
+        </div>
+
+        <h2 class="heading-display">Погружение</h2>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Контекст</h3>
+          <p class="text case-p">
+            Пользователи покупают билеты за&nbsp;несколько минут, но&nbsp;затем неделями
+            согласовывают планы в&nbsp;чатах, теряют ссылки, спорят о&nbsp;расходах и&nbsp;напоминают
+            друзьям о&nbsp;долгах. Нужно было объединить этот процесс внутри Т-Банка
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Проблема</h3>
+          <p class="text case-p">
+            Сервисы Т-Банка для&nbsp;путешествий и&nbsp;финансов уже существуют, но&nbsp;сейчас они не
+            связаны в&nbsp;единый сценарий совместной поездки
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Задача</h3>
+          <p class="text case-p">
+            Спроектировать функционал внутри приложения Т-Банка, который поможет
+            пользователю организовать совместную поездку с&nbsp;другими людьми и
+            оптимизировать фиксацию трат используя возможности экосистемы
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Критерии успеха</h3>
+          <p class="text case-lead">Минимум на&nbsp;уровне сценария:</p>
+          <ul class="marker-list">
+            <li class="text">Большинство черновиков превращаются в&nbsp;реальные поездки</li>
+            <li class="text">Значительное количество совместных активных действий внутри поездки</li>
+            <li class="text">Большинство поездок созданы с&nbsp;несколькими активными участниками</li>
+          </ul>
+          <p class="text case-lead">Максимум на&nbsp;уровне раздела Путешествий и&nbsp;Т-банка:</p>
+          <ul class="marker-list">
+            <li class="text">Рост использования тревел-сервисов</li>
+            <li class="text">Рост количества сборов денег и&nbsp;совместных платежей</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ИССЛЕДОВАНИЕ -->
+      <section class="case-section">
+        <h2 class="heading-display">Исследование</h2>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Поиск проблемных зон по&nbsp;открытым сточникам</h3>
+          <p class="text case-p"><strong>Что&nbsp;я&nbsp;сделала:</strong> проанализировала статьи, блоги и&nbsp;кейсы, посвящённые организации групповых путешествий.</p>
+          <p class="text case-p"><strong>Что&nbsp;дало:</strong> Позволило мне составить карту основных этапов (подготовка, сама поездка, расчёты после) и&nbsp;выявить потенциальные проблемные зоны, которые стали основой для&nbsp;подготовки к&nbsp;интервью с&nbsp;пользователями</p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод</h3>
+          <p class="text case-p">
+            На&nbsp;разных этапах поездки пользователю приходится решать разные задачи и
+            сталкиваться с&nbsp;разными барьерами
+          </p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Поведенческие глубинные интервью</h3>
+          <p class="text case-p"><strong>Что&nbsp;я&nbsp;сделала:</strong> Провела&nbsp;8&nbsp;интервью с&nbsp;людьми, которые путешествовали группой от&nbsp;3&nbsp;человек и&nbsp;участвовали в&nbsp;организации поездки или&nbsp;общих расходах</p>
+          <p class="text case-p"><strong>Зачем:</strong> Основной фокус был на&nbsp;том, чтобы детально разобрать конкретные ситуации из&nbsp;их последних поездок и&nbsp;выявить неочевидные проблемы и&nbsp;обходные пути, которые они использовали</p>
+          <div class="quote-grid">
+            <div class="quote-card quote-card--media">
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/interview-1.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/interview-2.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/interview-3.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/interview-4.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод</h3>
+          <p class="text case-p">
+            У&nbsp;совместных поездок нет единого сценария: люди гибко собирают план из&nbsp;разных
+            инструментов, начиная с&nbsp;идеи, которая часто возникает спонтанно. Бюджет
+            обычно откладывают до&nbsp;последнего или&nbsp;оценивают «на&nbsp;глаз», а&nbsp;разговоры о
+            деньгах и&nbsp;долгах становятся отдельным источником напряжения. При&nbsp;этом до
+            финансовых договорённостей группе сначала нужно договориться об&nbsp;идее поездки
+            и&nbsp;сравнить варианты
+          </p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Собрала карту сценария и&nbsp;User Flow</h3>
+          <p class="text case-p"><strong>Зачем:</strong> Чтобы разложить путь пользователя по&nbsp;этапам, увидеть барьеры и&nbsp;точки принятия решений, понять, где продукт может помочь ему двигаться дальше и&nbsp;превратить это в&nbsp;интерфейс</p>
+          <div class="quote-grid">
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">Карта сценария</span>
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/scenario-map.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="quote-card quote-card--media">
+              <span class="heading-serif">User Flow</span>
+              <div class="media-frame" style="--ratio: 318 / 180">
+                <img src="/src/img/case-travel-together/user-flow.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Бенчмарки</h3>
+          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> Провела конкурентный анализ сервисов, которые пользователи реально используют для&nbsp;групповых поездок, включая непрямых конкурентов и&nbsp;связки инструментов</p>
+          <p class="text case-p"><strong>Зачем:</strong> Определить базовые ожидания пользователей и&nbsp;возможности для&nbsp;интеграции сервисов Т-Банка</p>
+          <p class="text case-p"><strong>Как&nbsp;отбирала:</strong> Ориентировалась на&nbsp;упоминания из&nbsp;интервью, публикаций и&nbsp;профильных сообществ</p>
+          <div class="logo-row">
+            <img src="/src/img/case-travel-together/bench-1.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-2.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-3.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-4.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-5.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-6.png" alt="" loading="lazy" />
+            <img src="/src/img/case-travel-together/bench-7.png" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Выводы</h3>
+          <ul class="marker-list">
+            <li class="text"><strong>4/5</strong> объединяют планирование поездки в&nbsp;одном пространстве</li>
+            <li class="text"><strong>3/5</strong> помогают выбирать через рекомендации, сравнения и&nbsp;подсказки</li>
+            <li class="text"><strong>3/5</strong> поддерживают совместное планирование</li>
+            <li class="text"><strong>1/5</strong> связывает поездку с&nbsp;учётом общих расходов</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Уточнённая проблема после дискавери</h3>
+          <p class="text case-p">
+            После поялявления идеи о&nbsp;поездке непонятно, с&nbsp;чего начать и&nbsp;как&nbsp;двигаться
+            дальше, а&nbsp;так&nbsp;же&nbsp;во&nbsp;время поездки неудобно контролировать общие расходы и
+            просить друзей вернуть деньги
+          </p>
+        </div>
+      </section>
+
+      <!-- ДОРАБОТКА МАКЕТОВ -->
+      <section class="case-section case-section--16">
+        <h2 class="heading-display">Доработка макетов после UX теста</h2>
+        <p class="text case-p"><strong>Критически провалился стартовый экран поездки:</strong> пользователи воспринимали его как&nbsp;промо-страницу, а&nbsp;не&nbsp;как&nbsp;место для&nbsp;планирования, и&nbsp;не&nbsp;понимали, с&nbsp;чего начать</p>
+        <p class="text case-p"><strong>Пересобрала экран вокруг прогресса:</strong> отделила его от&nbsp;промо-страниц и&nbsp;добавила понятные состояния, которые показывают, что&nbsp;уже выбрано и&nbsp;какой шаг следующий</p>
+        <div class="media-frame" style="--ratio: 4096 / 3137">
+          <img src="/src/img/case-travel-together/rework.jpg" alt="" loading="lazy" />
+        </div>
+      </section>
+
+      <!-- ФИНАЛЬНЫЕ МАКЕТЫ -->
+      <section class="case-section" id="final">
+        <h2 class="heading-display">Финальные макеты</h2>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Гипотеза&nbsp;1</h3>
+          <p class="text case-p">
+            Если помочь группе перейти от&nbsp;идеи поездки к&nbsp;конкретному направлению, то
+            больше пользователей начнут её планировать
+          </p>
+          <p class="text case-p"><strong>Решение:</strong> интегрировала «Куда поехать» в&nbsp;сценарий создания поездки и&nbsp;добавила промо направлений, чтобы помогать с&nbsp;выбором на&nbsp;старте</p>
+          <div class="media-frame" style="--ratio: 700 / 649">
+            <img src="/src/img/case-travel-together/final-1.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 902">
+            <img src="/src/img/case-travel-together/final-2.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Гипотеза&nbsp;2</h3>
+          <p class="text case-p">
+            Если показывать пользователю следующие шаги и&nbsp;прогресс планирования, он будет
+            реже бросать сценарий и&nbsp;чаще доводить его до&nbsp;конца
+          </p>
+          <p class="text case-p"><strong>Решение:</strong> Разбила планирование на&nbsp;конкретные шаги и&nbsp;показываю, что&nbsp;уже выбрано, а&nbsp;что&nbsp;предстоит сделать. На&nbsp;их основе формируется минимальный бюджет поездки, чтобы заранее оценить расходы</p>
+          <div class="media-frame" style="--ratio: 700 / 954">
+            <img src="/src/img/case-travel-together/final-3.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Гипотеза&nbsp;3</h3>
+          <p class="text case-p">
+            Если сделать финансовые договорённости прозрачными и&nbsp;упростить взаиморасчёты,
+            пользователям будет проще контролировать общие траты и&nbsp;возвращать долги
+          </p>
+          <p class="text case-p"><strong>Решение:</strong> Показываем прогресс сборов до&nbsp;поездки, делим новые и&nbsp;уже совершённые траты во&nbsp;время, а&nbsp;после&nbsp;— сводим долги. Статусы и&nbsp;пуши автоматизируют возврат, избавляя от&nbsp;необходимости напоминать о&nbsp;деньгах</p>
+          <div class="media-frame" style="--ratio: 700 / 483">
+            <img src="/src/img/case-travel-together/final-4.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 483">
+            <img src="/src/img/case-travel-together/final-5.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод и&nbsp;рефлексия</h3>
+          <p class="text case-p">
+            Пользователю не&nbsp;нужен ещё один экран со&nbsp;всеми возможностями Т-Банка: ему
+            нужно понимать, что&nbsp;делать сейчас, что&nbsp;уже сделано и&nbsp;какой следующий шаг
+          </p>
+          <p class="text case-p">
+            Этот проект ещё раз показал мне, что&nbsp;сильное решение редко появляется сразу.
+            Оно складывается из&nbsp;вопросов, исследований, неудачных гипотез и&nbsp;итераций
+          </p>
+          <p class="text case-p">
+            Особенно интересно искать точку, где решение действительно полезно
+            пользователю и&nbsp;при&nbsp;этом создаёт дополнительную ценность для&nbsp;продукта
+          </p>
+        </div>
+      </section>
     </main>
 
     <nav class="case-nav container">

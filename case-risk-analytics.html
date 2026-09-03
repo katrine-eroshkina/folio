@@ -3,14 +3,227 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Почему меня заблокировали — кейс · Екатерина Ерошкина</title>
+    <title>Почему меня заблокировали&nbsp;— кейс · Екатерина Ерошкина</title>
     {{> head }}
   </head>
   <body>
     {{> header }}
 
     <main class="container case">
-      <!-- Контент кейса 1 «Почему меня заблокировали?» — фаза 4 (ждём лимит Paper). -->
+      <!-- ПОГРУЖЕНИЕ -->
+      <section class="case-section">
+        <div class="case-hero">
+          <h1 class="heading-display">«Почему меня заблокировали?» Как&nbsp;я&nbsp;упростила понимание риск-правил</h1>
+          <p class="text case-hero-lead">
+            В&nbsp;продукте уже было много аналитики, но&nbsp;она не&nbsp;помогала пользователю ответить
+            на&nbsp;главный вопрос: «Что&nbsp;сейчас с&nbsp;лимитами аккаунта?» Я&nbsp;исследовала, где именно
+            интерфейс теряет этот контекст, и&nbsp;переработала сценарий так, чтобы нужные
+            сигналы появлялись в&nbsp;нужный момент
+          </p>
+          <div class="media-frame" style="--ratio: 700 / 500">
+            <img src="/src/img/case-risk-analytics/hero.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="case-hero-links">
+            <a href="#final" class="link text">Сразу к&nbsp;макетам (вниз)</a>
+          </div>
+        </div>
+
+        <h2 class="heading-display">Погружение</h2>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Компания</h3>
+          <p class="text case-p">
+            Axcera&nbsp;— B2B-платформа, объединяющая клиентский портал, CRM и&nbsp;торговые
+            интеграции с&nbsp;биржами для&nbsp;проп-фирм, признанная в&nbsp;2025&nbsp;году «Лучшим
+            поставщиком софта для&nbsp;аналитики со&nbsp;сделками»
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Проблема</h3>
+          <p class="text case-p">
+            Пользователям приходилось самостоятельно разбираться в&nbsp;массиве метрик,
+            выбирать нужные показатели и&nbsp;рассчитывать запас до&nbsp;лимитов, чтобы понять,
+            насколько безопасно продолжать торговлю. Из-за этого риск оставался на
+            стороне пользователя, а&nbsp;блокировка часто становилась «неожиданной»
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Задача</h3>
+          <p class="text case-p">
+            Помочь вовремя замечать риск нарушения и&nbsp;понимать причины блокировки
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Критерии успеха</h3>
+          <ul class="marker-list">
+            <li class="text">Снижение количества breach по&nbsp;Daily Loss / Max Loss</li>
+            <li class="text">Увеличение % аккаунтов, вышедших из&nbsp;риска без&nbsp;блокировки</li>
+            <li class="text">Снижение % аккаунтов, достигших блокировки сразу после входа в&nbsp;риск</li>
+            <li class="text">Значительное увеличение среднего времени между Warning и&nbsp;Breach</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ИССЛЕДОВАНИЕ -->
+      <section class="case-section">
+        <h2 class="heading-display">Исследование</h2>
+
+        <div class="case-block">
+          <h3 class="heading-sans">С&nbsp;чего всё начиналось</h3>
+          <p class="text case-p">
+            Первоначально это выглядело как&nbsp;обычная задача по&nbsp;улучшению интерфейса.
+            Однако, во&nbsp;время работы я&nbsp;начала сомневаться, что&nbsp;визуальный редизайн сам по
+            себе сможет повлиять на&nbsp;результат, ради которого запускались изменения
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">UX аудит</h3>
+          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> Сфокусировалась на&nbsp;точках до&nbsp;и&nbsp;после совершения сделки</p>
+          <p class="text case-p"><strong>Почему:</strong> Торговля происходила во&nbsp;внешнем терминале (MetaTrader), поэтому зоной нашего влияния был только клиентский портал&nbsp;— этап подготовки к&nbsp;торговле и&nbsp;анализ результатов</p>
+          <p class="text case-p"><strong>Выявленная проблема:</strong> Текущий интерфейс заставляет пользователя сначала совершить действие, а&nbsp;уже потом разбираться в&nbsp;его последствиях</p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <div class="tab-row">
+            <span class="tab tab--active">Главная «ДО»</span>
+            <span class="tab">User Flow «ДО»</span>
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 536">
+            <img src="/src/img/case-risk-analytics/ux-audit.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод</h3>
+          <p class="text case-p">
+            Во&nbsp;всех трёх точках пользователь сам интерпретировал риск вместо понятных
+            сигналов от&nbsp;интерфейса. Возникает вопрос: почему главный экран не&nbsp;помогает
+            выбрать аккаунт, где нужно срочно менять стратегию?
+          </p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Валидирую гипотезу с&nbsp;командой</h3>
+          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> обсудила свои выводы и&nbsp;гипотезы с&nbsp;PM, CPO и&nbsp;дизайн-лидом</p>
+          <p class="text case-p"><strong>Почему:</strong> Нужно было понять, действительно ли&nbsp;это продуктовая проблема, а&nbsp;не&nbsp;ограничение системы: совпадает ли&nbsp;моё наблюдение с&nbsp;видением команды и&nbsp;стоит ли&nbsp;расширять задачу с&nbsp;визуального редизайна до&nbsp;пересмотра логики экрана</p>
+          <div class="quote-grid">
+            <div class="quote-card">
+              <span class="heading-serif">Отдел продаж</span>
+              <span class="text--sm text--muted">клиенты часто интересуются интеграциями и&nbsp;аналитическими модулями, им важно расширять возможности самого портала</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">Аналитики</span>
+              <span class="text--sm text--muted">критические изменения можно заметить заранее. Все данные о&nbsp;риске уже есть, но&nbsp;сейчас их сложно быстро считать в&nbsp;связке</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">PM</span>
+              <span class="text--sm text--muted">чем самостоятельнее пользователь управляет аккаунтом, тем меньше нагрузка на&nbsp;поддержку и&nbsp;выше качество опыта</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">CPO</span>
+              <span class="text--sm text--muted">удержание сильных юзеров напрямую влияет на&nbsp;репутацию и&nbsp;рост платформы&nbsp;— хороший опыт помогает привлекать новых</span>
+            </div>
+          </div>
+          <p class="text case-p"><strong>Вывод:</strong> это подтвердило, что&nbsp;проблема реально влияет на&nbsp;бизнес и&nbsp;улучшение главного экрана может стать возможностью сделать управление рисками более понятным и&nbsp;эффективным для&nbsp;клиентов</p>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Приоритизирую информацию</h3>
+          <p class="text case-p">
+            Дальше я&nbsp;решила проверить, какая информация действительно должна появляться
+            на&nbsp;главном экране, а&nbsp;какую лучше оставить внутри подробной аналитики
+          </p>
+          <p class="text case-lead">Для&nbsp;этого я:</p>
+          <ul class="marker-list">
+            <li class="text">изучила обратную связь от&nbsp;PM, продаж, аналитиков и&nbsp;CPO, провела с&nbsp;ними рабочие сессии;</li>
+            <li class="text">проанализировала отзывы трейдеров на&nbsp;Reddit и&nbsp;YouTube, чтобы выявить повторяющиеся проблемы и&nbsp;паттерны;</li>
+            <li class="text">сравнила решения конкурентов</li>
+          </ul>
+          <div class="quote-grid">
+            <div class="quote-card">
+              <span class="heading-serif">Нулевая Гипотеза</span>
+              <span class="text--sm text--muted">Если дать понять в&nbsp;каком состоянии аккаунта до&nbsp;открытия подробной аналитики, то&nbsp;пользователь будет реже случайно нарушать правила</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">Гипотеза&nbsp;1</span>
+              <span class="text--sm text--muted">Если вынести ключевые показатели риска на&nbsp;карточку, пользователь быстрее определит, требует ли&nbsp;аккаунт внимания</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">Гипотеза&nbsp;2</span>
+              <span class="text--sm text--muted">Если интерпретировать риск через статусы Safe / Warning / At Risk, его будет проще считывать без&nbsp;анализа цифр</span>
+            </div>
+            <div class="quote-card">
+              <span class="heading-serif">Гипотеза&nbsp;3</span>
+              <span class="text--sm text--muted">Если объяснять причину блокировки и&nbsp;следующие шаги, снизятся обращения в&nbsp;поддержку и&nbsp;вырастет вероятность повторной покупки</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Первая итерация и&nbsp;результаты UX теста</h3>
+          <p class="text case-p">
+            На&nbsp;основе выводов сформулировала гипотезы и&nbsp;начала проверять их на&nbsp;первых
+            макетах
+          </p>
+          <div class="media-frame" style="--ratio: 700 / 475">
+            <img src="/src/img/case-risk-analytics/ux-test-1.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <p class="text case-p"><strong>Вывод:</strong> Тесты показали, что&nbsp;потребности трейдеров сильно зависят от&nbsp;типа аккаунта. Универсальная карточка не&nbsp;могла одинаково хорошо работать для&nbsp;всех сценариев</p>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Новая гипотеза: адаптивная карточка</h3>
+          <div class="media-frame" style="--ratio: 700 / 262">
+            <img src="/src/img/case-risk-analytics/adaptive-card.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ФИНАЛЬНЫЕ МАКЕТЫ -->
+      <section class="case-section" id="final">
+        <h2 class="heading-display">Финальные макеты</h2>
+
+        <div class="case-block case-block--16">
+          <h3 class="heading-sans">Основная гипотеза</h3>
+          <p class="text case-p">
+            Если карточка будет адаптироваться под&nbsp;текущую фазу аккаунта (Evaluation /
+            Funded), пользователь будет видеть только релевантные показатели и&nbsp;не
+            перегружаться лишней информацией
+          </p>
+          <div class="media-frame" style="--ratio: 700 / 500">
+            <img src="/src/img/case-risk-analytics/final-main.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 417">
+            <img src="/src/img/case-risk-analytics/final-solution.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 400">
+            <img src="/src/img/case-risk-analytics/final-table-1.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="media-frame" style="--ratio: 700 / 282">
+            <img src="/src/img/case-risk-analytics/final-table-2.jpg" alt="" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Вывод и&nbsp;рефлексия</h3>
+          <p class="text case-p">
+            Изначально решение было шире: я&nbsp;рассматривала сценарий с&nbsp;инсайтами и
+            торговыми советами, но&nbsp;отказалась от&nbsp;него из-за высокой сложности,
+            непредсказуемого влияния на&nbsp;поведение и&nbsp;риска принимать решения за&nbsp;трейдера.
+            В&nbsp;продукт вошла только навигация по&nbsp;риску.
+          </p>
+          <p class="text case-p">
+            Следующим шагом стало бы&nbsp;наблюдение за&nbsp;использованием и&nbsp;проверка
+            поведенческих гипотез&nbsp;— например, сценария «охлаждения» после серии
+            убыточных сделок.
+          </p>
+        </div>
+      </section>
     </main>
 
     <nav class="case-nav container">
