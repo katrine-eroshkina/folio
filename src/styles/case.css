@@ -144,6 +144,10 @@
 .case .media-frame {
   cursor: zoom-in;
 }
+/* видео не разворачиваем — обычный курсор */
+.case .media-frame:has(video) {
+  cursor: auto;
+}
 .media-expand {
   position: absolute;
   top: 8px;
@@ -176,15 +180,18 @@
   z-index: 100;
   display: none;
   place-items: center;
-  padding: 56px 40px 40px;
+  padding: 64px 40px 40px;
   background: rgba(20, 20, 20, 0.92);
+  overflow: auto;
 }
 .lightbox.is-open {
   display: grid;
 }
 .lightbox img {
-  max-width: 100%;
-  max-height: 100%;
+  width: auto;
+  height: auto;
+  max-width: calc(100vw - 80px);
+  max-height: calc(100dvh - 104px);
   object-fit: contain;
 }
 .lightbox-close {
