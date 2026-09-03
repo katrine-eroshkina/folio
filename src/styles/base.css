@@ -1,0 +1,8 @@
+/* БАЗОВЫЕ ГЛОБАЛЬНЫЕ СТИЛИ.
+   @font-face (подключение шрифтов из src/fonts/) добавим в фазе 1. */
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #ffffff;
+  color: #111111;
+}

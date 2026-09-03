@@ -1,0 +1,6 @@
+/* Точка сборки стилей. Порядок важен: сначала сброс, потом токены, потом всё остальное. */
+
+@import "./reset.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
