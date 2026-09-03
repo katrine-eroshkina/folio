@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI-kit — витрина компонентов</title>
+    {{> head }}
+    <style>
+      /* Стили только для этой страницы-витрины, в сайт не идут. */
+      .kit { max-width: 860px; margin: 0 auto; padding: 48px 24px 120px; }
+      .kit h1 { font-family: var(--font-display); font-style: italic; font-size: 32px; margin-bottom: 8px; }
+      .kit > p { color: var(--color-muted); margin-bottom: 48px; }
+      .kit section { padding: 24px 0; border-top: 1px solid var(--color-line); }
+      .kit .label {
+        font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--color-muted); margin-bottom: 16px;
+      }
+      .kit .row { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+      .kit .swatch { width: 96px; }
+      .kit .swatch i { display: block; height: 48px; border: 1px solid var(--color-line); }
+      .kit .swatch span { font-size: 12px; color: var(--color-muted); }
+    </style>
+  </head>
+  <body>
+    <div class="kit">
+      <h1>UI-kit</h1>
+      <p>Витрина компонентов. Открывается только в dev (<code>/ui-kit.html</code>), в собранный сайт не попадает.</p>
+
+      <section>
+        <div class="label">Цвета</div>
+        <div class="row">
+          <span class="swatch"><i style="background:var(--color-ink)"></i><span>ink #232323</span></span>
+          <span class="swatch"><i style="background:var(--color-muted)"></i><span>muted #777</span></span>
+          <span class="swatch"><i style="background:var(--color-line)"></i><span>line #ebebeb</span></span>
+          <span class="swatch"><i style="background:var(--color-surface)"></i><span>surface #f9f9f9</span></span>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Типографика</div>
+        <div class="stack stack--12">
+          <span class="heading-hero">Екатерина Ерошкина</span>
+          <span class="heading-display">Погружение — заголовок кейса</span>
+          <span class="heading-serif">Обо мне — раздел главной</span>
+          <span class="heading-sans">Контекст — подзаголовок</span>
+          <p class="text">Основной абзац. Продуктовый дизайнер с бэкграундом в веб-дизайне, работала над B2B2C SaaS-решением для 5 стран.</p>
+          <p class="text text--sm text--muted">Подпись под карточкой кейса — 14px, приглушённая</p>
+          <p class="text--caption text--muted">Самая мелкая подпись — 12px</p>
+          <a href="#" class="link text">Обычная ссылка</a>
+          <a href="#" class="link link--serif">Ссылка курсивом (футер)</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Теги</div>
+        <div class="tag-group">
+          <span class="tag">web</span>
+          <span class="tag">b2b</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Рамка под изображение · .media-frame</div>
+        <div class="media-frame" style="--ratio: 700 / 300"></div>
+      </section>
+
+      <section>
+        <div class="label">Заглушка вместо видео · .media-placeholder</div>
+        <div class="stack stack--16" style="align-self:stretch">
+          <div class="media-placeholder" style="--ratio: 700 / 483">video placeholder</div>
+          <div class="media-placeholder media-placeholder--footer" style="--ratio: 340 / 84">gif placeholder</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Карточка кейса · .case-card</div>
+        <article class="case-card">
+          <div class="case-card-media">
+            <div class="media-frame" style="--ratio: 700 / 420"></div>
+            <div class="tag-group">
+              <span class="tag">web</span>
+              <span class="tag">b2b</span>
+            </div>
+          </div>
+          <div class="case-card-body">
+            <span class="heading-serif">«Почему меня заблокировали?»</span>
+            <span class="text--sm text--muted">Редизайнила главную страницу предварительной аналитики рисков сделок</span>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <div class="label">Список с маркером · .marker-list</div>
+        <ul class="marker-list">
+          <li class="text">Большинство пользователей персонализируют сертификат</li>
+          <li class="text">Уменьшение вопросов об оформлении до и после оплаты</li>
+          <li class="text">Рост повторного использования сертификатов как подарка</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="label">Инфо-карточки · .card-grid + .info-card</div>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="heading-serif">Где покупали</span>
+            <div class="media-frame" style="--ratio: 318 / 171"></div>
+          </div>
+          <div class="info-card">
+            <span class="heading-serif">Что важно</span>
+            <div class="media-frame" style="--ratio: 318 / 171"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Ряд логотипов · .logo-row</div>
+        <div class="logo-row">
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Капсула инструментов · .tool-bar</div>
+        <div class="tool-bar">
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Ряд фото · .photo-stack</div>
+        <div class="photo-stack">
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+          <img src="/src/img/ui/avatar.jpg" alt="" />
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Декоративные уголки · .corner-marks</div>
+        <div class="corner-marks" style="padding: 24px">
+          <p class="text text--muted" style="text-align:center">Блок с четырьмя квадратиками по углам</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Шапка кейса · .site-header</div>
+        <header class="site-header">
+          <a href="#">На главную</a>
+          <span class="site-header-id">
+            <img class="site-header-avatar" src="/src/img/ui/avatar.jpg" alt="" />
+            <a href="#">t.me</a>
+          </span>
+        </header>
+      </section>
+
+      <section>
+        <div class="label">Навигация между кейсами · .case-nav</div>
+        <nav class="case-nav">
+          <a href="#" class="link text">Вернуться к предыдущему</a>
+          <a href="#" class="link text">Читать следующий кейс</a>
+        </nav>
+      </section>
+    </div>
+
+    <section style="margin-top:48px">
+      <div class="kit" style="padding-bottom:24px"><div class="label">Футер главной · .site-footer</div></div>
+      {{> footer }}
+    </section>
+  </body>
+</html>

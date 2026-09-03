@@ -1,6 +1,13 @@
-/* Точка сборки стилей. Порядок важен: сначала сброс, потом токены, потом всё остальное. */
+/* Точка сборки стилей. Все @import — здесь, самыми первыми, в правильном порядке. */
 
+/* Шрифт заголовков (Playfair Display) из пакета. Geist подключён локально в base.css. */
+@import "@fontsource/playfair-display/600-italic.css";
+
+/* Свои файлы: сброс → токены → база → слои поверх. */
 @import "./reset.css";
 @import "./tokens.css";
 @import "./base.css";
+@import "./typography.css";
+@import "./layout.css";
 @import "./components.css";
+@import "./chrome.css";

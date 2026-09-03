@@ -1,8 +1,3 @@
-/* Заголовки — Playfair Display из пакета @fontsource (кириллица есть).
-   Браузер качает только нужные наборы символов — за это отвечают unicode-range.
-   ВАЖНО: строка @import обязана идти самой первой в файле. */
-@import "@fontsource/playfair-display/600-italic.css";
-
 /* Локальный шрифт Geist (вариативный: один файл — все толщины 100–900).
    Файлы: src/fonts/geist/. Скачаны с Google Fonts, лицензия OFL (см. OFL.txt). */
 @font-face {
@@ -26,7 +21,7 @@ body {
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: var(--leading-body);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--weight-regular);
   color: var(--color-ink);
   background: var(--color-bg);
   /* не подделывать жирность/курсив, если нужного начертания нет */

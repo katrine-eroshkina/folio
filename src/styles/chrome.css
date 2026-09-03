@@ -1,0 +1,72 @@
+/* ОБВЯЗКА СТРАНИЦ — шапка, футер, навигация между кейсами.
+   Шапка и .case-nav — только на страницах кейсов. Футер — только на главной. */
+
+/* ---- Шапка (кейсы) ---- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+}
+.site-header a {
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+.site-header a:hover {
+  color: var(--color-ink);
+}
+.site-header-id {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.site-header-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-line);
+  transform: rotate(180deg); /* перевёрнут — как в макете; убери строку, если не нужно */
+}
+
+/* ---- Навигация «предыдущий / следующий кейс» ---- */
+.case-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+
+/* ---- Футер (главная) ---- */
+.site-footer {
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+  border-bottom-left-radius: var(--radius-8);
+  border-bottom-right-radius: var(--radius-8);
+  padding-block: 60px;
+}
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+.site-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.site-footer-links a {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  color: var(--color-on-dark);
+}
+.site-footer-tagline {
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-muted);
+}

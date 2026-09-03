@@ -27,11 +27,16 @@ git push
 | Что | Где |
 |---|---|
 | Страницы (текст, разметка) | `index.html`, `case-*.html` в корне |
-| Шапка и футер (общие) | `src/partials/header.html`, `src/partials/footer.html` |
+| Шапка (только кейсы) и футер (только главная) | `src/partials/header.html`, `src/partials/footer.html` |
 | Цвета, размеры, отступы | `src/styles/tokens.css` |
-| Стили компонентов | `src/styles/components.css` |
+| Заголовки, абзацы, ссылки | `src/styles/typography.css` |
+| Колонка, ритм секций, декор-уголки | `src/styles/layout.css` |
+| Компоненты (тег, карточка, список, кнопки) | `src/styles/components.css` |
+| Шапка / футер / навигация кейсов | `src/styles/chrome.css` |
+| Витрина всех компонентов (только в dev) | `ui-kit.html` → `http://localhost:5173/ui-kit.html` |
 | Шрифты | Geist (текст) — локально в `src/fonts/geist/`; Playfair Display (заголовки) — пакет `@fontsource`. Подключено в `src/styles/base.css` |
-| Картинки | `src/img/<страница>/` |
+| Картинки страниц | `src/img/<страница>/` |
+| Иконки/аватар (общие) | `src/img/ui/` |
 | Видео | `public/media/` |
 | Аналитика | `src/partials/analytics.html` |
 

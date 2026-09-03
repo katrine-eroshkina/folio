@@ -15,41 +15,40 @@
   --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   /* ---- Размер текста / высота строки (пары) ---- */
-  --text-display: 36px;   --leading-display: 40px;  /* имя на главной (уточним по месту) */
-  --text-h1: 28px;        --leading-h1: 36px;       /* заголовки секций в кейсах */
-  --text-h2: 18px;        --leading-h2: 24px;       /* заголовки секций на главной; заголовок карточки кейса */
-  --text-h3: 20px;        --leading-h3: 24px;       /* подзаголовки в кейсах (без курсива) */
-  --text-body: 16px;      --leading-body: 20px;     /* основной текст */
-  --text-small: 14px;     --leading-small: 18px;    /* подпись под карточкой кейса */
-  --text-caption: 12px;   --leading-caption: 14px;  /* самая мелкая подпись */
-  --text-tag: 14px;       --leading-tag: 16px;      /* теги web / b2b */
+  --text-display: 36px;   --leading-display: 40px;  /* имя на главной */
+  --text-h1: 28px;        --leading-h1: 36px;       /* .heading-display: заголовок кейса, «Погружение», «Исследование» */
+  --text-h2: 18px;        --leading-h2: 24px;       /* .heading-serif: разделы главной, заголовок карточки кейса */
+  --text-h3: 20px;        --leading-h3: 24px;       /* .heading-sans: «Контекст», «Проблема», «Вывод» */
+  --text-body: 16px;      --leading-body: 20px;     /* .text: основной абзац */
+  --text-sm: 14px;        --leading-sm: 18px;       /* .text--sm: подпись под карточкой кейса */
+  --text-caption: 12px;   --leading-caption: 14px;  /* .text--caption: самая мелкая подпись, футер */
+  --text-tag: 14px;       --leading-tag: 16px;      /* .tag: web / b2b */
 
   /* ---- Насыщенность шрифта ---- */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
 
   /* ---- Межбуквенное ---- */
   --tracking-normal: 0em;
   --tracking-tight: -0.01em;  /* по желанию для крупного заголовка */
 
   /* ---- Скругления ---- */
-  --radius-none: 0;
-  --radius-sm: 8px;    /* нижние углы футера */
-  --radius-page: 40px; /* нижние углы белого контентного блока */
+  --radius-8: 8px;    /* нижние углы футера, плашка-пасхалка */
+  --radius-16: 16px;  /* инфо-карточки в кейсе */
+  --radius-24: 24px;  /* капсула с иконками инструментов */
+  --radius-40: 40px;  /* нижние углы белого контентного блока */
 
-  /* ---- Отступы ---- */
-  --space-3xs: 2px;
-  --space-2xs: 8px;
-  --space-xs: 10px;
-  --space-sm: 12px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
-  --space-2xl: 60px;
+  /* ---- Отступы (числовая шкала по макету) ---- */
+  --space-0: 0;
+  --space-4: 4px;    /* заголовок ↔ текст внутри пункта списка */
+  --space-12: 12px;  /* заголовок раздела ↔ абзац; между пунктами */
+  --space-16: 16px;  /* внутри hero-блока кейса */
+  --space-32: 32px;  /* между разделами внутри кейса */
+  --space-60: 60px;  /* между крупными секциями страницы */
 
   /* ---- Раскладка ---- */
-  --container: 700px;     /* ширина контентной колонки */
+  --container: 700px;     /* ширина контентной колонки (десктоп — ровно столько) */
   --page-max: 1440px;     /* макс. ширина макета */
-  --page-margin: 40px;    /* боковые поля на узких экранах (уточним в адаптиве) */
+  --page-pad: 20px;       /* боковые поля, когда экран уже контейнера */
 }

@@ -1,3 +1,169 @@
-/* UI-KIT — переиспользуемые куски интерфейса. Соберём в фазе 2:
-   тег (web / b2b), ссылки строкой, карточка кейса, декор-уголки,
-   .media-placeholder (серая плашка под видео) и т.д. */
+/* КОМПОНЕНТЫ — переиспользуемые куски интерфейса.
+   Правило: класс в HTML → ровно эта строка в CSS. Варианты через --модификатор. */
+
+/* ---- Тег web / b2b ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+  font-size: var(--text-tag);
+  line-height: var(--leading-tag);
+}
+
+.tag-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---- Рамка под изображение/видео ----
+   Пропорции задаются per-use: style="--ratio: 700 / 483". */
+.media-frame {
+  width: 100%;
+  aspect-ratio: var(--ratio, 700 / 420);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  overflow: clip;
+}
+.media-frame > img,
+.media-frame > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Заглушка вместо будущего видео ---- */
+.media-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: var(--ratio, 700 / 420);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.media-placeholder--footer {
+  background: transparent;
+  border: none;
+  outline: 3px solid rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-8);
+}
+
+/* ---- Карточка кейса (главная) ---- */
+.case-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.case-card-media {
+  position: relative;
+}
+.case-card-media .tag-group {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+.case-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ---- Список с маркером-звёздочкой ---- */
+.marker-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.marker-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.marker-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: url("../img/ui/marker-star.png") center / 16px 16px no-repeat;
+}
+
+/* ---- Инфо-карточки в сетке 2×2 (кейс 3) ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  width: 100%;
+}
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+  padding: 12px 12px 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-16);
+}
+
+/* ---- Ряд логотипов 40×40 (бенчмарки) ---- */
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.logo-row img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* ---- Капсула с иконками инструментов (главная) ---- */
+.tool-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  padding: 8px 4px;
+  background: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  border-radius: var(--radius-24);
+}
+.tool-bar img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* ---- Ряд из 4 фото (главная, «Обо мне») ---- */
+.photo-stack {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+.photo-stack img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+/* ---- Кнопка «наверх» (кейсы) ---- */
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-ink);
+}
