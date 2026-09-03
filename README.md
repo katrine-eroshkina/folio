@@ -27,7 +27,7 @@ git push
 | Что | Где |
 |---|---|
 | Страницы (текст, разметка) | `index.html`, `case-*.html` в корне |
-| Шапка (только кейсы) и футер (только главная) | `src/partials/header.html`, `src/partials/footer.html` |
+| Шапка (кейсы), футер (главная), секретный блок (все страницы) | `src/partials/header.html`, `footer.html`, `secret.html` |
 | Цвета, размеры, отступы | `src/styles/tokens.css` |
 | Заголовки, абзацы, ссылки | `src/styles/typography.css` |
 | Колонка, ритм секций, декор-уголки | `src/styles/layout.css` |

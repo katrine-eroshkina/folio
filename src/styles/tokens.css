@@ -15,8 +15,7 @@
   --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   /* ---- Размер текста / высота строки (пары) ---- */
-  --text-display: 36px;   --leading-display: 40px;  /* имя на главной */
-  --text-h1: 28px;        --leading-h1: 36px;       /* .heading-display: заголовок кейса, «Погружение», «Исследование» */
+  --text-h1: 28px;        --leading-h1: 36px;       /* .heading-display: имя на главной, заголовок кейса, «Погружение» */
   --text-h2: 18px;        --leading-h2: 24px;       /* .heading-serif: разделы главной, заголовок карточки кейса */
   --text-h3: 20px;        --leading-h3: 24px;       /* .heading-sans: «Контекст», «Проблема», «Вывод» */
   --text-body: 16px;      --leading-body: 20px;     /* .text: основной абзац */

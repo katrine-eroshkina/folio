@@ -1,6 +1,8 @@
 /* Точка сборки стилей. Все @import — здесь, самыми первыми, в правильном порядке. */
 
-/* Шрифт заголовков (Playfair Display) из пакета. Geist подключён локально в base.css. */
+/* Шрифт заголовков (Playfair Display) из пакета. Geist подключён локально в base.css.
+   600 — заголовки, 500 — мелкая строка в футере. */
+@import "@fontsource/playfair-display/500-italic.css";
 @import "@fontsource/playfair-display/600-italic.css";
 
 /* Свои файлы: сброс → токены → база → слои поверх. */

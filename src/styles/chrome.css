@@ -1,5 +1,5 @@
-/* ОБВЯЗКА СТРАНИЦ — шапка, футер, навигация между кейсами.
-   Шапка и .case-nav — только на страницах кейсов. Футер — только на главной. */
+/* ОБВЯЗКА СТРАНИЦ — шапка, футер, навигация между кейсами, секретный блок.
+   Шапка и .case-nav — только на кейсах. Футер — только на главной. Секрет — везде. */
 
 /* ---- Шапка (кейсы) ---- */
 .site-header {
@@ -26,7 +26,6 @@
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--color-line);
-  transform: rotate(180deg); /* перевёрнут — как в макете; убери строку, если не нужно */
 }
 
 /* ---- Навигация «предыдущий / следующий кейс» ---- */
@@ -39,6 +38,8 @@
 
 /* ---- Футер (главная) ---- */
 .site-footer {
+  position: relative;
+  overflow: clip;
   background: var(--color-ink);
   color: var(--color-on-dark);
   border-bottom-left-radius: var(--radius-8);
@@ -46,6 +47,8 @@
   padding-block: 60px;
 }
 .site-footer .container {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,8 +68,97 @@
   line-height: var(--leading-h2);
   color: var(--color-on-dark);
 }
+
+/* строка «Сейчас в [лого] not found» + подпись под ней */
+.site-footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+.site-footer-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--weight-medium);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+}
+.site-footer-status b {
+  font-weight: inherit;
+  color: var(--color-on-dark);
+}
+.site-footer-status span {
+  color: var(--color-muted);
+}
+.site-footer-logo-slot {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px dashed var(--color-muted);
+}
 .site-footer-tagline {
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
   color: var(--color-muted);
+  opacity: 0.5;
+}
+
+/* декоративные мечи в полях слева и справа */
+.site-footer-sword {
+  position: absolute;
+  top: 50%;
+  width: 142px;
+  height: auto;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+.site-footer-sword--left {
+  left: 0;
+  translate: 0 -50%;
+  rotate: 270deg;
+  transform-origin: center;
+}
+.site-footer-sword--right {
+  right: 0;
+  translate: 0 -50%;
+  rotate: 90deg;
+  transform-origin: center;
+}
+@media (max-width: 900px) {
+  .site-footer-sword {
+    display: none;
+  }
+}
+
+/* ---- Секретный блок (на всех страницах, под футером) ---- */
+.secret {
+  position: relative;
+  overflow: clip;
+  background: var(--color-bg);
+  padding-block: 74px;
+}
+.secret-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 340px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  text-align: center;
+}
+.secret-marks {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: min(700px, calc(100% - 40px));
+  height: 134px;
+  pointer-events: none;
 }
