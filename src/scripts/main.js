@@ -67,15 +67,17 @@ if (caseRoot) {
   });
 
   caseRoot.querySelectorAll(".media-frame").forEach((frame) => {
-    const img = frame.querySelector("img");
-    if (!img) return; // видео не разворачиваем
+    if (!frame.querySelector("img")) return; // видео не разворачиваем
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "media-expand";
     btn.setAttribute("aria-label", "Открыть во весь экран");
     btn.innerHTML = EXPAND_SVG;
     frame.appendChild(btn);
-    const open = () => openLightbox(img.currentSrc || img.src);
-    frame.addEventListener("click", open);
+    frame.addEventListener("click", () => {
+      // берём видимую картинку (в табах их несколько)
+      const img = frame.querySelector("img:not([hidden])") || frame.querySelector("img");
+      openLightbox(img.currentSrc || img.src);
+    });
   });
 }
