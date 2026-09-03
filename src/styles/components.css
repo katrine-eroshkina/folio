@@ -160,6 +160,8 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* скругляем углы плиточным иконкам; на круглых логотипах не видно */
+  border-radius: var(--radius-16);
   /* единая тень для всех иконок (в самих SVG тени нет) */
   filter: drop-shadow(0 2.6px 2.6px rgba(0, 0, 0, 0.2))
     drop-shadow(0 1.3px 0.7px rgba(0, 0, 0, 0.1));
