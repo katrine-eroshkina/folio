@@ -1,9 +1,25 @@
-/* Подключение шрифтов (файлы приезжают из пакетов @fontsource, попадают в сборку).
-   Браузер скачивает только нужные наборы символов (кириллица / латиница) — за это
-   отвечают unicode-range внутри этих файлов. */
-@import "@fontsource-variable/inter/wght.css";
+/* Заголовки и мелкий декор — из пакетов @fontsource (в них кириллица есть).
+   Браузер качает только нужные наборы символов — за это отвечают unicode-range.
+   ВАЖНО: строки @import обязаны идти самыми первыми в файле. */
 @import "@fontsource/playfair-display/600-italic.css";
 @import "@fontsource/jetbrains-mono/400.css";
+
+/* Локальный шрифт Geist (вариативный: один файл — все толщины 100–900).
+   Файлы: src/fonts/geist/. Скачаны с Google Fonts, лицензия OFL (см. OFL.txt). */
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/geist/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/geist/Geist-Italic-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 /* БАЗОВЫЕ ГЛОБАЛЬНЫЕ СТИЛИ */
 

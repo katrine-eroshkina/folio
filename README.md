@@ -30,7 +30,7 @@ git push
 | Шапка и футер (общие) | `src/partials/header.html`, `src/partials/footer.html` |
 | Цвета, размеры, отступы | `src/styles/tokens.css` |
 | Стили компонентов | `src/styles/components.css` |
-| Шрифты | пакеты `@fontsource*` (подключены в `src/styles/base.css`) |
+| Шрифты | Geist — локально в `src/fonts/geist/`; Playfair Display и JetBrains Mono — пакеты `@fontsource*`. Всё подключено в `src/styles/base.css` |
 | Картинки | `src/img/<страница>/` |
 | Видео | `public/media/` |
 | Аналитика | `src/partials/analytics.html` |
