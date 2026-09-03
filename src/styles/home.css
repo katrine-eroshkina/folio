@@ -49,7 +49,7 @@
 }
 .hero-typing {
   position: absolute;
-  top: 88px; /* примерно середина кружка аватара */
+  top: 72px; /* чуть выше середины кружка аватара */
   right: -40px;
   padding: 8px 12px;
   background: var(--color-surface);
@@ -102,12 +102,6 @@
 .case-card {
   width: 100%;
   color: inherit;
-}
-.case-card .heading-serif {
-  transition: opacity 0.15s ease;
-}
-.case-card:hover .heading-serif {
-  opacity: 0.6;
 }
 
 /* ---- Обо мне (блок) ---- */
