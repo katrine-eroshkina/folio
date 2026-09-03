@@ -105,8 +105,8 @@
   color: var(--color-on-dark);
 }
 
-/* локально для кейса 1: маркер списка по верху, а не по центру */
-.case--top-markers .marker-list li {
+/* единственное исключение на сайте: маркер списка по верху (кейс 1, «Для этого я:») */
+.marker-list--top li {
   align-items: flex-start;
 }
 
