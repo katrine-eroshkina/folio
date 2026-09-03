@@ -118,13 +118,13 @@
   user-select: none;
 }
 .site-footer-sword--left {
-  left: 0;
+  left: var(--space-60);
   translate: 0 -50%;
   rotate: 270deg;
   transform-origin: center;
 }
 .site-footer-sword--right {
-  right: 0;
+  right: var(--space-60);
   translate: 0 -50%;
   rotate: 90deg;
   transform-origin: center;

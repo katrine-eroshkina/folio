@@ -161,9 +161,7 @@
   width: 45px;
   height: 45px;
   object-fit: contain;
-  /* мягкая тень-подложка под логотипом, как в макете */
-  filter: drop-shadow(0 2.6px 2.6px rgba(0, 0, 0, 0.2))
-    drop-shadow(0 1.3px 0.7px rgba(0, 0, 0, 0.1));
+  /* тень-подложка уже вшита в сами SVG-иконки — здесь не дублируем */
   transition: transform 0.16s ease;
 }
 
@@ -173,8 +171,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   translate: -50% -50%;
   z-index: 0;
   border-radius: var(--radius-16);
@@ -209,7 +207,7 @@
 
 .tool:hover > img,
 .tool:hover > svg {
-  transform: scale(1.5);
+  transform: scale(1.4);
 }
 .tool:hover::before {
   opacity: 1;
