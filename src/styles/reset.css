@@ -29,6 +29,11 @@ svg {
   max-width: 100%;
 }
 
+/* [hidden] должен побеждать display у img/video выше */
+[hidden] {
+  display: none !important;
+}
+
 input,
 button,
 textarea,
