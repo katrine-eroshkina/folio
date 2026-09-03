@@ -13,7 +13,6 @@
   /* ---- Шрифты ---- */
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
   /* ---- Размер текста / высота строки (пары) ---- */
   --text-display: 36px;   --leading-display: 40px;  /* имя на главной (уточним по месту) */

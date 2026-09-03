@@ -1,8 +1,7 @@
-/* Заголовки и мелкий декор — из пакетов @fontsource (в них кириллица есть).
+/* Заголовки — Playfair Display из пакета @fontsource (кириллица есть).
    Браузер качает только нужные наборы символов — за это отвечают unicode-range.
-   ВАЖНО: строки @import обязаны идти самыми первыми в файле. */
+   ВАЖНО: строка @import обязана идти самой первой в файле. */
 @import "@fontsource/playfair-display/600-italic.css";
-@import "@fontsource/jetbrains-mono/400.css";
 
 /* Локальный шрифт Geist (вариативный: один файл — все толщины 100–900).
    Файлы: src/fonts/geist/. Скачаны с Google Fonts, лицензия OFL (см. OFL.txt). */
