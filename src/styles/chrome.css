@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 16px;
+  padding: 16px 0 60px; /* 60px до футера */
 }
 
 /* ---- Футер (главная) ---- */
@@ -165,4 +165,11 @@
   width: min(700px, calc(100% - 40px));
   height: 134px;
   pointer-events: none;
+}
+.secret-media {
+  width: 100%;
+  aspect-ratio: 340 / 84;
+  object-fit: cover;
+  border-radius: var(--radius-8);
+  outline: 3px solid rgba(0, 0, 0, 0.03);
 }

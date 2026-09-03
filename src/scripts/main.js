@@ -39,24 +39,28 @@ if (caseRoot) {
   const EXPAND_SVG =
     '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3H3v6M21 9V3h-6M15 21h6v-6M3 15v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  const CLOSE_SVG =
+    '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   let box;
+  const closeLightbox = () => {
+    if (box) box.classList.remove("is-open");
+    document.body.style.overflow = "";
+  };
   const openLightbox = (src) => {
     if (!src) return;
     if (!box) {
       box = document.createElement("div");
       box.className = "lightbox";
-      box.hidden = true;
-      box.innerHTML = '<img alt="" />';
-      box.addEventListener("click", closeLightbox);
+      box.innerHTML =
+        '<button type="button" class="lightbox-close" aria-label="Закрыть">' +
+        CLOSE_SVG +
+        '</button><img alt="" />';
+      box.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
       document.body.appendChild(box);
     }
     box.querySelector("img").src = src;
-    box.hidden = false;
+    box.classList.add("is-open");
     document.body.style.overflow = "hidden";
-  };
-  const closeLightbox = () => {
-    if (box) box.hidden = true;
-    document.body.style.overflow = "";
   };
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();
