@@ -9,7 +9,142 @@
   <body>
     <!-- На главной шапки нет — страница начинается сразу с контента. -->
     <main class="page">
-      <!-- Контент главной страницы — соберём в фазе 3. -->
+      <div class="page-bg" aria-hidden="true">
+        <img class="page-bg-photo page-bg-photo--tl" src="/src/img/home/bg-photo.png" alt="" />
+        <img class="page-bg-photo page-bg-photo--br" src="/src/img/home/bg-photo.png" alt="" />
+      </div>
+
+      <div class="container home">
+        <!-- Обо мне: аватар, имя, био, ссылки -->
+        <section class="hero">
+          <div class="hero-avatar">
+            <img
+              src="/src/img/home/hero-avatar-cluster.png"
+              alt="Екатерина Ерошкина"
+              width="247"
+              height="214"
+            />
+            <span class="hero-typing">typing…</span>
+          </div>
+
+          <div class="hero-text">
+            <h1 class="heading-display">Екатерина&nbsp;&nbsp;Ерошкина</h1>
+            <p class="text hero-bio">
+              Продуктовый дизайнер с бэкграундом в веб-дизайне. Работала над B2B2C
+              SaaS-решением для 5 стран, проектировала веб — и мобильные сервисы,
+              участвовала в развитии продукта от исследования проблемы до запуска решений
+            </p>
+          </div>
+
+          <nav class="hero-links">
+            <!-- TODO: реальные ссылки -->
+            <a href="#" class="link">t.me</a>
+            <a href="#" class="link">почта</a>
+            <a href="#" class="link">cv</a>
+          </nav>
+
+          <div class="corner-marks hero-marks" aria-hidden="true"></div>
+        </section>
+
+        <!-- Кейс 1 -->
+        <a class="case-card" href="/case-risk-analytics.html">
+          <div class="case-card-media">
+            <div class="media-frame" style="--ratio: 700 / 420">
+              <img src="/src/img/home/case-cover-risk-analytics.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="tag-group">
+              <span class="tag">web</span>
+              <span class="tag">b2b</span>
+            </div>
+          </div>
+          <div class="case-card-body">
+            <span class="heading-serif">«Почему меня заблокировали?»</span>
+            <span class="text--sm text--muted"
+              >Редизайнила главную страницу предварительной аналитики рисков сделок</span
+            >
+          </div>
+        </a>
+
+        <!-- Кейс 2 -->
+        <a class="case-card" href="/case-gift-certificate.html">
+          <div class="case-card-media">
+            <div class="media-frame" style="--ratio: 700 / 420">
+              <img src="/src/img/home/case-cover-gift-certificate.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="tag-group">
+              <span class="tag">mob</span>
+              <span class="tag">b2c</span>
+            </div>
+          </div>
+          <div class="case-card-body">
+            <span class="heading-serif">Подарок начинается с оформления</span>
+            <span class="text--sm text--muted"
+              >Пересобрала сценарий покупки сертификата в полноценный подарок</span
+            >
+          </div>
+        </a>
+
+        <!-- Кейс 3 -->
+        <a class="case-card" href="/case-travel-together.html">
+          <div class="case-card-media">
+            <div class="media-frame" style="--ratio: 700 / 420">
+              <img src="/src/img/home/case-cover-travel-together.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="tag-group">
+              <span class="tag">mob</span>
+              <span class="tag">b2c</span>
+            </div>
+          </div>
+          <div class="case-card-body">
+            <span class="heading-serif">Как сделать совместное путешествие проще</span>
+            <span class="text--sm text--muted"
+              >Спроектировала новый сценарий для совместных поездок</span
+            >
+          </div>
+        </a>
+
+        <!-- Обо мне -->
+        <section class="about">
+          <div class="corner-marks about-marks" aria-hidden="true"></div>
+          <h2 class="heading-serif">Обо мне</h2>
+          <p class="text about-bio">
+            Люблю пробовать новое и постоянно чему-то учусь — отчасти из любопытства,
+            отчасти потому что люблю уметь больше, чем вчера. Последнее в итоге и привело
+            меня в дизайн. В жизни люблю пилатес, кастомные клавиатуры и смешные мемы
+          </p>
+          <p class="about-braille" aria-hidden="true">
+            <span>⠛⠕⠝⠝⠁ ⠃⠑ ⠗⠊⠉⠓</span>
+            <span>⠁⠎ ⠋⠥⠉⠅</span>
+          </p>
+          <div class="photo-stack">
+            <img src="/src/img/home/about-01.jpg" alt="" loading="lazy" />
+            <img src="/src/img/home/about-02.jpg" alt="" loading="lazy" />
+            <img src="/src/img/home/about-03.jpg" alt="" loading="lazy" />
+            <img src="/src/img/home/about-04.jpg" alt="" loading="lazy" />
+          </div>
+        </section>
+
+        <!-- Подглядеть в док -->
+        <section class="doc">
+          <div class="section-head">
+            <h2 class="heading-serif">Подглядеть в док</h2>
+            <p class="text text--muted">
+              Здесь собраны инструменты, которые я использую в работе каждый день, а также
+              те, которые сейчас активно изучаю и пробую в своих проектах
+            </p>
+          </div>
+          <div class="tool-bar">
+            <span class="tool" data-tip="Chrome"><img src="/src/img/ui/tools/chrome.svg" alt="Chrome" /></span>
+            <span class="tool" data-tip="Figma"><img src="/src/img/ui/tools/figma.svg" alt="Figma" /></span>
+            <span class="tool" data-tip="Claude"><img src="/src/img/ui/tools/claude.svg" alt="Claude" /></span>
+            <span class="tool" data-tip="Codex"><img src="/src/img/ui/tools/codex.svg" alt="Codex" /></span>
+            <span class="tool" data-tip="GitHub"><img src="/src/img/ui/tools/github.svg" alt="GitHub" /></span>
+            <span class="tool" data-tip="After Effects"><img src="/src/img/ui/tools/after-effects.svg" alt="After Effects" /></span>
+            <span class="tool" data-tip="Craft"><img src="/src/img/ui/tools/craft.svg" alt="Craft" /></span>
+            <span class="tool" data-tip="Spotify"><img src="/src/img/ui/tools/spotify.svg" alt="Spotify" /></span>
+          </div>
+        </section>
+      </div>
     </main>
 
     {{> footer }}

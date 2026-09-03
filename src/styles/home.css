@@ -1,0 +1,161 @@
+/* ГЛАВНАЯ СТРАНИЦА — раскладка секций, специфичные элементы. */
+
+.page {
+  position: relative;
+}
+
+/* колонка страницы: секции с шагом 60 */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-60);
+  padding-block: var(--space-60) 80px;
+}
+
+/* ---- Фоновые ASCII-фото по краям ---- */
+.page-bg {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+.page-bg-photo {
+  position: absolute;
+  top: 0;
+  width: 319px;
+  height: 611px;
+  opacity: 0.55;
+  filter: brightness(0) saturate(0);
+}
+.page-bg-photo--tl { left: 0; }
+.page-bg-photo--br { right: 0; rotate: 180deg; }
+@media (max-width: 1200px) {
+  .page-bg { display: none; }
+}
+
+/* ---- Обо мне / герой ---- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+.hero-avatar {
+  position: relative;
+  width: 247px;
+}
+.hero-typing {
+  position: absolute;
+  top: 24px;
+  right: -44px;
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-ink);
+}
+.hero-typing::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  bottom: 8px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-surface);
+  rotate: 45deg;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+.hero-bio {
+  max-width: 532px;
+}
+.hero-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* декор-уголки вокруг имени и био */
+.hero-marks {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: 206px;
+  width: min(700px, 100%);
+  height: 150px;
+}
+
+/* ---- Карточка кейса как ссылка ---- */
+.case-card {
+  width: 100%;
+  color: inherit;
+}
+.case-card .heading-serif {
+  transition: opacity 0.15s ease;
+}
+.case-card:hover .heading-serif {
+  opacity: 0.6;
+}
+
+/* ---- Обо мне (блок) ---- */
+.about {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  max-width: 528px;
+  text-align: center;
+}
+.about-bio {
+  max-width: 528px;
+}
+.about-braille {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+}
+.about-marks {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: -8px;
+  width: min(700px, calc(100vw - 40px));
+  height: 134px;
+}
+
+/* фото в «Обо мне» — тонкая обводка */
+.photo-stack img {
+  outline: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ---- Подглядеть в док ---- */
+.doc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  max-width: 528px;
+  text-align: center;
+}
