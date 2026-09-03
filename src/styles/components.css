@@ -131,12 +131,13 @@
 }
 
 /* ---- Капсула с иконками инструментов (главная) ----
-   Плитка иконки — 70×70, поле капсулы 16px, зазор между иконками 14px.
-   Тень-подложка вшита в сами SVG. Ховер: иконка растёт + матовая плитка + тултип. */
+   Большая подложка = .tool-bar. На ней постоянные подложки-плитки .tool (70×70).
+   Сверху — лого ~56px с тенью. Поле капсулы 16px, между плитками ~15px (space-between).
+   Ховер: увеличивается только лого, плитка не двигается. */
 .tool-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* крайние иконки — к полям 16px, между — поровну */
+  justify-content: space-between;
   width: 100%;
   padding: 16px;
   background: var(--color-surface);
@@ -144,48 +145,35 @@
   border-radius: var(--radius-24);
 }
 
+/* постоянная подложка под иконку */
 .tool {
+  --tool-icon: 56px; /* размер лого внутри плитки — можно менять */
   position: relative;
-  isolation: isolate;
   flex-shrink: 0;
   width: 70px;
   height: 70px;
   display: grid;
   place-items: center;
+  border-radius: var(--radius-16);
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.72));
+  border: 1.7px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
+
+/* лого поверх подложки */
 .tool > img,
 .tool > svg {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+  width: var(--tool-icon);
+  height: var(--tool-icon);
   object-fit: contain;
-  /* скругляем углы плиточным иконкам; на круглых логотипах не видно */
-  border-radius: var(--radius-16);
-  /* единая тень для всех иконок (в самих SVG тени нет) */
+  border-radius: 12px; /* скругление плиточным лого; на круглых не видно */
   filter: drop-shadow(0 2.6px 2.6px rgba(0, 0, 0, 0.2))
     drop-shadow(0 1.3px 0.7px rgba(0, 0, 0, 0.1));
   transition: transform 0.16s ease;
 }
-
-/* Матовая плитка за иконкой — появляется на ховере */
-.tool::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 88px;
-  height: 88px;
-  translate: -50% -50%;
-  z-index: 0;
-  border-radius: var(--radius-24);
-  background: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.75));
-  border: 1.7px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  scale: 0.6;
-  transition: opacity 0.16s ease, scale 0.16s ease;
+.tool:hover > img,
+.tool:hover > svg {
+  transform: scale(1.2);
 }
 
 /* Тултип с названием — под иконкой */
@@ -208,14 +196,6 @@
   transition: opacity 0.16s ease;
 }
 
-.tool:hover > img,
-.tool:hover > svg {
-  transform: scale(1.25);
-}
-.tool:hover::before {
-  opacity: 1;
-  scale: 1;
-}
 .tool:hover::after {
   opacity: 1;
 }
