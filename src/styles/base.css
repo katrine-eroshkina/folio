@@ -1,8 +1,20 @@
-/* БАЗОВЫЕ ГЛОБАЛЬНЫЕ СТИЛИ.
-   @font-face (подключение шрифтов из src/fonts/) добавим в фазе 1. */
+/* Подключение шрифтов (файлы приезжают из пакетов @fontsource, попадают в сборку).
+   Браузер скачивает только нужные наборы символов (кириллица / латиница) — за это
+   отвечают unicode-range внутри этих файлов. */
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource/playfair-display/600-italic.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
+/* БАЗОВЫЕ ГЛОБАЛЬНЫЕ СТИЛИ */
 
 body {
-  font-family: system-ui, sans-serif;
-  background: #ffffff;
-  color: #111111;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  /* не подделывать жирность/курсив, если нужного начертания нет */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }

@@ -1,15 +1,56 @@
-/* ДИЗАЙН-ТОКЕНЫ — единые значения для всего сайта.
-   Заполним в фазе 1 по макету. Здесь будут:
-   - цвета (--color-…)
-   - размеры текста (--text-…)
-   - насыщенность шрифта (--font-weight-…)
-   - межбуквенное (--tracking-…)
-   - высота строки (--leading-…)
-   - отступы (--space-…)
-   - скругления (--radius-…)
-   Каждая строка — с подписью, что это и где применяется.
+/* ДИЗАЙН-ТОКЕНЫ — единые значения для всего сайта, снятые с макета.
    Меняешь значение здесь — оно меняется по всему сайту. */
 
 :root {
-  /* placeholder — фаза 1 */
+  /* ---- Цвета ---- */
+  --color-bg: #ffffff;        /* фон страниц */
+  --color-ink: #232323;       /* основной текст; тёмные плашки — футер, теги */
+  --color-muted: #777777;     /* вторичный текст, ссылки, подписи */
+  --color-on-dark: #ffffff;   /* текст на тёмном фоне */
+  --color-line: #ebebeb;      /* границы, декоративные квадратики */
+  --color-surface: #f9f9f9;   /* фон плашек под картинки и видео */
+
+  /* ---- Шрифты ---- */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* ---- Размер текста / высота строки (пары) ---- */
+  --text-display: 36px;   --leading-display: 40px;  /* имя на главной (уточним по месту) */
+  --text-h1: 28px;        --leading-h1: 36px;       /* заголовки секций в кейсах */
+  --text-h2: 18px;        --leading-h2: 24px;       /* заголовки секций на главной; заголовок карточки кейса */
+  --text-h3: 20px;        --leading-h3: 24px;       /* подзаголовки в кейсах (без курсива) */
+  --text-body: 16px;      --leading-body: 20px;     /* основной текст */
+  --text-small: 14px;     --leading-small: 18px;    /* подпись под карточкой кейса */
+  --text-caption: 12px;   --leading-caption: 14px;  /* самая мелкая подпись */
+  --text-tag: 14px;       --leading-tag: 16px;      /* теги web / b2b */
+
+  /* ---- Насыщенность шрифта ---- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* ---- Межбуквенное ---- */
+  --tracking-normal: 0em;
+  --tracking-tight: -0.01em;  /* по желанию для крупного заголовка */
+
+  /* ---- Скругления ---- */
+  --radius-none: 0;
+  --radius-sm: 8px;    /* нижние углы футера */
+  --radius-page: 40px; /* нижние углы белого контентного блока */
+
+  /* ---- Отступы ---- */
+  --space-3xs: 2px;
+  --space-2xs: 8px;
+  --space-xs: 10px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 60px;
+
+  /* ---- Раскладка ---- */
+  --container: 700px;     /* ширина контентной колонки */
+  --page-max: 1440px;     /* макс. ширина макета */
+  --page-margin: 40px;    /* боковые поля на узких экранах (уточним в адаптиве) */
 }

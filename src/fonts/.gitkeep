@@ -1,1 +1,2 @@
-# Сюда положим .woff2 шрифтов в фазе 1: Playfair Display, Geist, Geist Mono, JetBrains Mono
+# Пусто. Шрифты подключены как пакеты @fontsource (см. src/styles/base.css).
+# Эта папка — на случай, если позже перейдём на локальные .woff2.

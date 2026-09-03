@@ -30,7 +30,7 @@ git push
 | Шапка и футер (общие) | `src/partials/header.html`, `src/partials/footer.html` |
 | Цвета, размеры, отступы | `src/styles/tokens.css` |
 | Стили компонентов | `src/styles/components.css` |
-| Шрифты | `src/fonts/` |
+| Шрифты | пакеты `@fontsource*` (подключены в `src/styles/base.css`) |
 | Картинки | `src/img/<страница>/` |
 | Видео | `public/media/` |
 | Аналитика | `src/partials/analytics.html` |
