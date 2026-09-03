@@ -9,11 +9,22 @@
   <body>
     {{> header }}
 
-    <main class="container">
-      <!-- Кейс 3 «Подарок начинается с оформления» — соберём в фазе 4.
-           Здесь будет видео вместо серой плашки (фаза 5). -->
+    <main class="container case">
+      <!-- Контент кейса 3 «Подарок начинается с оформления» — фаза 4 (ждём лимит Paper).
+           Здесь же видео вместо серой плашки (блок anim_1_2, 700×483) — фаза 5. -->
     </main>
-    <!-- Футера на кейсах нет — внизу навигация «предыдущий / следующий» (фаза 4). -->
+
+    <nav class="case-nav container">
+      <a href="/case-risk-analytics.html" class="link text">Вернуться к&nbsp;предыдущему</a>
+      <a href="/case-travel-together.html" class="link text">Читать следующий кейс</a>
+    </nav>
+
+    <a href="#top" class="to-top" aria-label="Наверх">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+
     {{> secret }}
 
     <script type="module" src="/src/scripts/main.js"></script>

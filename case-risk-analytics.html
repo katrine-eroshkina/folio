@@ -9,10 +9,21 @@
   <body>
     {{> header }}
 
-    <main class="container">
-      <!-- Кейс 1 «Почему меня заблокировали?» — соберём в фазе 4. -->
+    <main class="container case">
+      <!-- Контент кейса 1 «Почему меня заблокировали?» — фаза 4 (ждём лимит Paper). -->
     </main>
-    <!-- Футера на кейсах нет — внизу навигация «предыдущий / следующий» (фаза 4). -->
+
+    <nav class="case-nav container">
+      <a href="/index.html" class="link text">Вернуться к&nbsp;предыдущему</a>
+      <a href="/case-gift-certificate.html" class="link text">Читать следующий кейс</a>
+    </nav>
+
+    <a href="#top" class="to-top" aria-label="Наверх">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+
     {{> secret }}
 
     <script type="module" src="/src/scripts/main.js"></script>

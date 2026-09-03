@@ -215,8 +215,10 @@
 /* ---- Кнопка «наверх» (кейсы) ---- */
 .to-top {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  /* ~32px от правого края контейнера; на узких экранах — 20px от края окна */
+  right: max(20px, calc((100vw - var(--container)) / 2 + 32px));
+  bottom: 32px;
+  z-index: 10;
   width: 40px;
   height: 40px;
   display: grid;
@@ -225,4 +227,19 @@
   border: 1px solid var(--color-line);
   border-radius: 50%;
   color: var(--color-ink);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  /* появляется при прокрутке, прячется у низа страницы (см. main.js) */
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 8px;
+  transition: opacity 0.2s ease, translate 0.2s ease, visibility 0.2s;
+}
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+}
+.to-top svg {
+  width: 14px;
+  height: 14px;
 }
