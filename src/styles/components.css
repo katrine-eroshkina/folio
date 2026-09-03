@@ -131,14 +131,15 @@
 }
 
 /* ---- Капсула с иконками инструментов (главная) ----
-   Капсула фиксированной высоты. Внутри — .tool: 45×45 иконка на подложке.
-   Ховер: иконка увеличивается + всплывает матовая плитка и тултип. */
+   Капсула фиксированной высоты. Внутри — .tool: слот 87×87, иконка занимает
+   почти всю высоту (тень-подложка вшита в SVG). Ширина капсулы набирается из
+   количества иконок. Ховер: иконка растёт + всплывает матовая плитка и тултип. */
 .tool-bar {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
-  min-height: 105px;
   padding: 8px 4px;
   background: var(--color-surface);
   border: 1px solid rgba(0, 0, 0, 0.012);
@@ -149,8 +150,8 @@
   position: relative;
   isolation: isolate;
   flex-shrink: 0;
-  width: 45px;
-  height: 45px;
+  width: 87px;
+  height: 87px;
   display: grid;
   place-items: center;
 }
@@ -158,24 +159,24 @@
 .tool > svg {
   position: relative;
   z-index: 1;
-  width: 45px;
-  height: 45px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   /* тень-подложка уже вшита в сами SVG-иконки — здесь не дублируем */
   transition: transform 0.16s ease;
 }
 
-/* Матовая плитка 70×70 за иконкой — появляется на ховере */
+/* Матовая плитка за иконкой — появляется на ховере */
 .tool::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 80px;
-  height: 80px;
+  width: 92px;
+  height: 92px;
   translate: -50% -50%;
   z-index: 0;
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-24);
   background: linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.75));
   border: 1.7px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -207,7 +208,7 @@
 
 .tool:hover > img,
 .tool:hover > svg {
-  transform: scale(1.4);
+  transform: scale(1.25);
 }
 .tool:hover::before {
   opacity: 1;
