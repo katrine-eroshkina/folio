@@ -69,6 +69,30 @@
   top: 12px;
   left: 12px;
 }
+
+/* Вариант обложки «в рамке» (кейс 1): бейджи в потоке над картинкой,
+   картинка с боковыми полями и прижата к низу рамки.
+   32 по бокам, 20 между бейджами и картинкой, верхние углы 8 / нижние 0. */
+.case-card-media--framed {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 32px 0; /* верх регулируется, бока 32, низ 0 (картинка к краю) */
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-8) var(--radius-8) 0 0;
+  overflow: clip;
+}
+.case-card-media--framed .tag-group {
+  position: static;
+}
+.case-card-media--framed .media-frame {
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-8) var(--radius-8) 0 0;
+}
+
 .case-card-body {
   display: flex;
   flex-direction: column;
