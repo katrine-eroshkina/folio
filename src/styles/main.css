@@ -15,3 +15,6 @@
 @import "./chrome.css";
 @import "./home.css";
 @import "./case.css";
+
+/* Адаптив — идёт последним, чтобы перекрывать десктопные правила. */
+@import "./responsive.css";
