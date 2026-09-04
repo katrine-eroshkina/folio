@@ -25,7 +25,20 @@ if (SMOOTH_SCROLL && !prefersReduced) {
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -24 });
+      // цель и её блоки показываем сразу: иначе reveal-сдвиг (translateY)
+      // уводит точку прокрутки, и попадаешь мимо заголовка
+      [target, ...target.children, ...target.querySelectorAll("[data-reveal]")].forEach((el) => {
+        el.style.transition = "none";
+        el.classList.add("is-visible");
+      });
+      lenis.scrollTo(target, {
+        offset: -24,
+        onComplete: () => {
+          // подстраховка от смещений из-за подгрузки картинок по пути
+          const y = target.getBoundingClientRect().top + window.scrollY - 24;
+          if (Math.abs(y - window.scrollY) > 3) lenis.scrollTo(y, { duration: 0.35 });
+        },
+      });
     });
   });
 }
@@ -143,14 +156,23 @@ if (caseRoot) {
   });
 }
 
-// --- Появление блоков при скролле ---
-// главная: [data-reveal]; кейсы: каждый прямой блок внутри .case-section
+// --- Появление блоков ---
+// главная: [data-reveal]; кейсы: каждый прямой блок внутри .case-section.
+// Интро-каскад (блоки, видимые сразу при загрузке) проигрывается ОДИН раз
+// за сессию вкладки — при переходах между страницами больше не повторяется.
+// Всё, что ниже сгиба, появляется по скроллу как обычно.
 const revealables = document.querySelectorAll("[data-reveal], .case .case-section > *");
 if (revealables.length) {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce || !("IntersectionObserver" in window)) {
+  if (prefersReduced || !("IntersectionObserver" in window)) {
     revealables.forEach((el) => el.classList.add("is-visible"));
   } else {
+    let introSeen = null;
+    try {
+      introSeen = sessionStorage.getItem("introSeen");
+    } catch (_) {
+      /* приватный режим и т. п. — считаем, что интро ещё не было */
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries
@@ -165,7 +187,26 @@ if (revealables.length) {
       },
       { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
     );
-    revealables.forEach((el) => io.observe(el));
+
+    const vh = window.innerHeight;
+    revealables.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const inView = r.top < vh && r.bottom > 0;
+      if (inView && introSeen) {
+        // интро уже видели в этой сессии — показываем без анимации
+        el.style.transition = "none";
+        el.classList.add("is-visible");
+        requestAnimationFrame(() => (el.style.transition = ""));
+      } else {
+        io.observe(el);
+      }
+    });
+
+    try {
+      sessionStorage.setItem("introSeen", "1");
+    } catch (_) {
+      /* ignore */
+    }
   }
 }
 
