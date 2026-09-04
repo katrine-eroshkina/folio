@@ -132,9 +132,17 @@ if (revealables.length) {
   }
 }
 
-// --- Затухание контента у верхнего края экрана (страницы кейсов) ---
-if (document.querySelector(".case")) {
+// --- Затухание контента у верхнего края экрана (кейсы + главная) ---
+if (document.querySelector(".case, .page")) {
   const topFade = document.createElement("div");
   topFade.className = "edge-fade--top";
   document.body.append(topFade);
+
+  // на главной хедера нет — держим дымку скрытой, пока не прокрутили,
+  // иначе она ложится на hero
+  if (!document.querySelector(".site-header")) {
+    const gateFade = () => topFade.classList.toggle("is-hidden", window.scrollY < 40);
+    window.addEventListener("scroll", gateFade, { passive: true });
+    gateFade();
+  }
 }
