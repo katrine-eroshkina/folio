@@ -19,37 +19,27 @@
   transform: none;
 }
 
-/* ============ ЗАТУХАНИЕ КОНТЕНТА У КРАЁВ ЭКРАНА (страницы кейсов) ============
-   Сверху контент «уходит» в фон под хедер, снизу — «появляется» из фона.
-   Полосы фиксированные, кликам не мешают. Нижняя прячется у футера (JS). */
-.edge-fade {
+/* ============ ЗАТУХАНИЕ КОНТЕНТА У ВЕРХНЕГО КРАЯ (страницы кейсов) ============
+   Контент «уходит» в белую дымку под хедер. Полоса фиксированная, кликам
+   не мешает. Высота (height) — главная крутилка: если задевает заголовок,
+   уменьшай. */
+.edge-fade--top {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 9; /* над контентом, под кнопкой «наверх» (10) и хедером (20) */
   pointer-events: none;
-}
-.edge-fade--top {
-  top: 0;
-  height: 200px;
+  height: 120px;
   background: linear-gradient(
-    var(--color-bg) 30%,
-    color-mix(in srgb, var(--color-bg) 60%, transparent) 60%,
+    var(--color-bg) 25%,
+    color-mix(in srgb, var(--color-bg) 55%, transparent) 55%,
     transparent
   );
-  /* лёгкая «дымка»: блюр сильнее у верха, к низу сходит на нет */
+  /* «дымка»: блюр сильнее у верха, к низу сходит на нет */
   backdrop-filter: blur(4px);
-  -webkit-mask: linear-gradient(#000 45%, transparent);
-  mask: linear-gradient(#000 45%, transparent);
-}
-.edge-fade--bottom {
-  bottom: 0;
-  height: 120px;
-  background: linear-gradient(transparent, var(--color-bg));
-  transition: opacity 0.25s ease;
-}
-.edge-fade--bottom.is-hidden {
-  opacity: 0;
+  -webkit-mask: linear-gradient(#000 35%, transparent 85%);
+  mask: linear-gradient(#000 35%, transparent 85%);
 }
 
 /* ============ БЕЗ ЛИШНЕГО ДВИЖЕНИЯ ============ */

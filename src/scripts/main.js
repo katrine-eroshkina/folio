@@ -132,20 +132,9 @@ if (revealables.length) {
   }
 }
 
-// --- Затухание контента у краёв экрана (страницы кейсов) ---
+// --- Затухание контента у верхнего края экрана (страницы кейсов) ---
 if (document.querySelector(".case")) {
   const topFade = document.createElement("div");
-  topFade.className = "edge-fade edge-fade--top";
-  const bottomFade = document.createElement("div");
-  bottomFade.className = "edge-fade edge-fade--bottom";
-  document.body.append(topFade, bottomFade);
-
-  const syncFade = () => {
-    const docH = document.documentElement.scrollHeight;
-    const nearBottom = window.innerHeight + window.scrollY > docH - 200;
-    bottomFade.classList.toggle("is-hidden", nearBottom); // прячем у футера
-  };
-  window.addEventListener("scroll", syncFade, { passive: true });
-  window.addEventListener("resize", syncFade, { passive: true });
-  syncFade();
+  topFade.className = "edge-fade--top";
+  document.body.append(topFade);
 }
