@@ -62,6 +62,12 @@
   color: var(--color-muted);
 }
 
+/* hero кейса 1 (единственный .media-frame в шапке кейса): верхние углы 8, нижние 0.
+   Раньше скругление было вшито в картинку, теперь задаём через CSS. */
+.case-hero .media-frame {
+  border-radius: var(--radius-8) var(--radius-8) 0 0;
+}
+
 /* ряд телефонных скринов в hero (case 2/3) */
 .phone-row {
   display: flex;
