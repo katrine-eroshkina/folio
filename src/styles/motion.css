@@ -1,0 +1,52 @@
+/* АНИМАЦИИ И ЭФФЕКТЫ. Всё «оживление» страниц собрано здесь.
+   Подключается последним. Всё, что двигается, выключается при
+   prefers-reduced-motion (блок в самом низу файла). */
+
+/* ============ ПОЯВЛЕНИЕ БЛОКОВ ПРИ СКРОЛЛЕ (главная) ============
+   Класс .js на <html> ставит инлайн-скрипт в <head> ещё до отрисовки,
+   поэтому без JS блоки просто видны сразу — никакого мигания.
+   Элементы помечаются атрибутом data-reveal в HTML. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============ ЗАТУХАНИЕ КОНТЕНТА У КРАЁВ ЭКРАНА (страницы кейсов) ============
+   Сверху контент «уходит» в фон под хедер, снизу — «появляется» из фона.
+   Полосы фиксированные, кликам не мешают. Нижняя прячется у футера (JS). */
+.edge-fade {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9; /* над контентом, под кнопкой «наверх» (10) и хедером (20) */
+  pointer-events: none;
+}
+.edge-fade--top {
+  top: 0;
+  height: 160px;
+  background: linear-gradient(var(--color-bg), transparent);
+}
+.edge-fade--bottom {
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(transparent, var(--color-bg));
+  transition: opacity 0.25s ease;
+}
+.edge-fade--bottom.is-hidden {
+  opacity: 0;
+}
+
+/* ============ БЕЗ ЛИШНЕГО ДВИЖЕНИЯ ============ */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  /* полосы у краёв оставляем — это статичная маска, а не движение */
+}

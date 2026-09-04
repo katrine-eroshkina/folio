@@ -105,3 +105,46 @@ if (caseRoot) {
     });
   });
 }
+
+// --- Появление блоков при скролле (data-reveal, главная) ---
+const revealables = document.querySelectorAll("[data-reveal]");
+if (revealables.length) {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) {
+    revealables.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((e) => e.isIntersecting)
+          .forEach((entry, i) => {
+            const el = entry.target;
+            io.unobserve(el);
+            el.style.transitionDelay = i * 80 + "ms"; // лёгкий стаггер, если появились разом
+            requestAnimationFrame(() => el.classList.add("is-visible"));
+            setTimeout(() => (el.style.transitionDelay = ""), 800); // потом ничего не ждёт
+          });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+    revealables.forEach((el) => io.observe(el));
+  }
+}
+
+// --- Затухание контента у краёв экрана (страницы кейсов) ---
+if (document.querySelector(".case")) {
+  const topFade = document.createElement("div");
+  topFade.className = "edge-fade edge-fade--top";
+  const bottomFade = document.createElement("div");
+  bottomFade.className = "edge-fade edge-fade--bottom";
+  document.body.append(topFade, bottomFade);
+
+  const syncFade = () => {
+    const docH = document.documentElement.scrollHeight;
+    const nearBottom = window.innerHeight + window.scrollY > docH - 200;
+    bottomFade.classList.toggle("is-hidden", nearBottom); // прячем у футера
+  };
+  window.addEventListener("scroll", syncFade, { passive: true });
+  window.addEventListener("resize", syncFade, { passive: true });
+  syncFade();
+}
