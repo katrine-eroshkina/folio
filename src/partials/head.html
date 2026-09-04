@@ -3,34 +3,28 @@
      стартовали скрытыми без мигания; без JS они просто видны сразу -->
 <script>
   document.documentElement.classList.add("js");
-  // View Transitions: при переходе между страницами блоки, которые уже
-  // в зоне видимости (и сам морфящийся блок), показываем сразу и без
-  // анимации — иначе fade из data-reveal «дёргается» вместе с морфом.
-  // Остальные блоки появятся по скроллу как обычно.
+  // При переходе между страницами (View Transitions) блоки, которые уже
+  // в зоне видимости, показываем сразу и без анимации — чтобы кроссфейд
+  // не «моргал» их появлением. Остальные появятся по скроллу как обычно.
   addEventListener("pagereveal", function (e) {
     if (!e.viewTransition) return;
     var touched = [];
-    var show = function (el) {
-      el.style.transition = "none";
-      el.classList.add("is-visible");
-      touched.push(el);
-    };
     document
       .querySelectorAll("[data-reveal], .case .case-section > *")
       .forEach(function (el) {
         var r = el.getBoundingClientRect();
-        if (r.top < innerHeight && r.bottom > 0) show(el);
+        if (r.top < innerHeight && r.bottom > 0) {
+          el.style.transition = "none";
+          el.classList.add("is-visible");
+          touched.push(el);
+        }
       });
-    document.querySelectorAll(".vt-cover-1").forEach(function (m) {
-      var p = m.closest("[data-reveal], .case-hero");
-      if (p) show(p);
-    });
-    // вернуть обычный transition после перехода
-    e.viewTransition.finished.finally(function () {
+    var restore = function () {
       touched.forEach(function (el) {
         el.style.transition = "";
       });
-    });
+    };
+    e.viewTransition.finished.then(restore, restore); // then+catch: гасим AbortError при отмене
   });
 </script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
