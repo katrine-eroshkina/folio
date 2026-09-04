@@ -9,7 +9,8 @@ const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 const SMOOTH_SCROLL = true;
 let lenis = null;
 if (SMOOTH_SCROLL && !prefersReduced) {
-  lenis = new Lenis();
+  // duration — «тягучесть», wheelMultiplier — насколько резво реагирует колесо
+  lenis = new Lenis({ duration: 1.0, wheelMultiplier: 1.3 });
   const raf = (time) => {
     lenis.raf(time);
     requestAnimationFrame(raf);
