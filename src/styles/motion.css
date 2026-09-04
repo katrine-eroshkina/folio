@@ -2,35 +2,6 @@
    Подключается последним. Всё, что двигается, выключается при
    prefers-reduced-motion (блок в самом низу файла). */
 
-/* ============ ЗВЁЗДОЧКА У АВАТАРКИ (главная) ============
-   Та же иконка, что в .marker-list (../ui/marker-star.png) — концепт сайта,
-   не случайная картинка. Летает по овалу вокруг .hero-avatar (247×214) и
-   ныряет за аватарку — z-index ниже нуля, у самой аватарки z-index:1.
-   offset-rotate: auto разворачивает её по направлению движения (мерцание).
-   Только CSS, без JS. Крутилки: offset-path (форма/размер петли), width
-   (размер звёздочки), длительность animation. */
-.hero-star {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 22px;
-  height: auto;
-  pointer-events: none;
-  offset-path: path("M 23 107 A 100 70 0 1 1 223 107 A 100 70 0 1 1 23 107");
-  offset-rotate: auto;
-  animation: star-orbit 18s linear infinite;
-}
-.hero-avatar > img:not(.hero-star) {
-  position: relative;
-  z-index: 1;
-}
-@keyframes star-orbit {
-  to {
-    offset-distance: 100%;
-  }
-}
-
 /* ============ ПЛАВНЫЙ СКРОЛЛ (Lenis) ============
    Классы .lenis* вешает сам скрипт на <html>. Выключается в main.js
    (SMOOTH_SCROLL) и автоматически при prefers-reduced-motion. */
@@ -110,8 +81,4 @@ html.lenis body {
   }
   /* полосы у краёв оставляем — это статичная маска, а не движение */
 
-  /* звёздочка — чисто декоративное движение, прячем совсем */
-  .hero-star {
-    display: none;
-  }
 }
