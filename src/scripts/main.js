@@ -1,9 +1,43 @@
 // JS сайта.
 
+import Lenis from "lenis";
+
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// --- Плавный скролл (Lenis) ---
+// Выключить полностью: поставь SMOOTH_SCROLL = false.
+const SMOOTH_SCROLL = true;
+let lenis = null;
+if (SMOOTH_SCROLL && !prefersReduced) {
+  lenis = new Lenis();
+  const raf = (time) => {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  };
+  requestAnimationFrame(raf);
+
+  // якорные ссылки (#final, #top …) — плавно через Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (id.length < 2) return; // просто "#"
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -24 });
+    });
+  });
+}
+
+// прокрутка наверх — через Lenis, иначе нативно
+const scrollToTop = () => {
+  if (lenis) lenis.scrollTo(0);
+  else window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+};
+
 // --- Кнопка «наверх» (страницы кейсов) ---
 const toTop = document.querySelector(".to-top");
 if (toTop) {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const update = () => {
     const y = window.scrollY;
     const docH = document.documentElement.scrollHeight;
@@ -15,7 +49,7 @@ if (toTop) {
   update();
   toTop.addEventListener("click", (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" });
+    scrollToTop();
   });
 }
 
@@ -63,6 +97,7 @@ if (caseRoot) {
   const closeLightbox = () => {
     if (box) box.classList.remove("is-open", "is-zoomed");
     document.body.style.overflow = "";
+    if (lenis) lenis.start();
   };
   const openLightbox = (src) => {
     if (!src) return;
@@ -85,6 +120,7 @@ if (caseRoot) {
     box.querySelector("img").src = src;
     box.classList.add("is-open");
     document.body.style.overflow = "hidden";
+    if (lenis) lenis.stop();
   };
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();

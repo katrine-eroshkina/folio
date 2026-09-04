@@ -2,6 +2,26 @@
    Подключается последним. Всё, что двигается, выключается при
    prefers-reduced-motion (блок в самом низу файла). */
 
+/* ============ ПЛАВНЫЙ СКРОЛЛ (Lenis) ============
+   Классы .lenis* вешает сам скрипт на <html>. Выключается в main.js
+   (SMOOTH_SCROLL) и автоматически при prefers-reduced-motion. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* ============ ПОЯВЛЕНИЕ БЛОКОВ ПРИ СКРОЛЛЕ ============
    Класс .js на <html> ставит инлайн-скрипт в <head> ещё до отрисовки,
    поэтому без JS блоки просто видны сразу — никакого мигания.
