@@ -219,13 +219,13 @@
   object-fit: contain;
   cursor: zoom-in;
 }
-/* клик по картинке → натуральный размер, лайтбокс скроллится от левого верхнего угла */
-.lightbox.is-zoomed {
-  place-items: start;
-}
+/* клик по картинке → натуральный размер.
+   margin:auto центрирует, пока картинка меньше экрана, и «отпускает» её
+   к краю (со скроллом) по той оси, где она больше экрана. */
 .lightbox.is-zoomed img {
   max-width: 2400px;
   max-height: none;
+  margin: auto;
   cursor: zoom-out;
 }
 .lightbox-close {
