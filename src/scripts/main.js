@@ -106,11 +106,12 @@ if (caseRoot) {
   });
 }
 
-// --- Появление блоков при скролле (data-reveal, главная) ---
-const revealables = document.querySelectorAll("[data-reveal]");
+// --- Появление блоков при скролле ---
+// главная: [data-reveal]; кейсы: каждый прямой блок внутри .case-section
+const revealables = document.querySelectorAll("[data-reveal], .case .case-section > *");
 if (revealables.length) {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) {
+  if (reduce || !("IntersectionObserver" in window)) {
     revealables.forEach((el) => el.classList.add("is-visible"));
   } else {
     const io = new IntersectionObserver(

@@ -10,7 +10,12 @@
   align-items: center;
   justify-content: space-between;
   padding-block: 24px;
-  background: var(--color-bg);
+  /* без жёсткого нижнего края — плавно переходит в полосу затухания (.edge-fade--top) */
+  background: linear-gradient(
+    var(--color-bg) 62%,
+    color-mix(in srgb, var(--color-bg) 55%, transparent) 82%,
+    transparent
+  );
 }
 .site-header a {
   color: var(--color-muted);
