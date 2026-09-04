@@ -67,6 +67,19 @@ html.lenis body {
   opacity: 0;
 }
 
+/* ============ ПЕРЕХОД МЕЖДУ СТРАНИЦАМИ (View Transitions) ============
+   Плавное «перетекание» между главной и страницей кейса; текст кейса
+   мягко проявляется. Где не поддерживается (сейчас в основном Firefox) —
+   обычный мгновенный переход, ничего не ломается. */
+@view-transition {
+  navigation: auto;
+}
+/* общий элемент: обложка кейса 1 на главной ↔ hero на его странице
+   (у кейсов 2/3 в шапке — ряд телефонов, там просто кроссфейд) */
+.vt-cover-1 {
+  view-transition-name: case-1-cover;
+}
+
 /* ============ БЕЗ ЛИШНЕГО ДВИЖЕНИЯ ============ */
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal],
@@ -76,4 +89,11 @@ html.lenis body {
     transition: none;
   }
   /* полосы у краёв оставляем — это статичная маска, а не движение */
+
+  /* переходы между страницами — без анимации */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
