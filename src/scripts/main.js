@@ -23,14 +23,32 @@ if (toTop) {
 document.querySelectorAll("[data-tabs]").forEach((group) => {
   const tabs = [...group.querySelectorAll("[data-tab]")];
   const panels = [...group.querySelectorAll("[data-tab-panel]")];
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.toggle("tab--active", t === tab));
-      panels.forEach((p) => {
-        p.hidden = p.dataset.tabPanel !== tab.dataset.tab;
-      });
+
+  // рамка подстраивает пропорцию под показанную картинку (снимки разной формы)
+  const fitFrame = (panel) => {
+    if (panel.tagName !== "IMG") return;
+    const frame = panel.closest(".media-frame");
+    if (!frame) return;
+    const apply = () => {
+      if (panel.naturalWidth) {
+        frame.style.setProperty("--ratio", panel.naturalWidth + " / " + panel.naturalHeight);
+      }
+    };
+    panel.complete ? apply() : panel.addEventListener("load", apply, { once: true });
+  };
+
+  const activate = (key) => {
+    tabs.forEach((t) => t.classList.toggle("tab--active", t.dataset.tab === key));
+    panels.forEach((p) => {
+      p.hidden = p.dataset.tabPanel !== key;
+      if (!p.hidden) fitFrame(p);
     });
-  });
+  };
+
+  tabs.forEach((tab) => tab.addEventListener("click", () => activate(tab.dataset.tab)));
+
+  const initial = tabs.find((t) => t.classList.contains("tab--active")) || tabs[0];
+  if (initial) activate(initial.dataset.tab);
 });
 
 // --- Разворот картинок кейса на весь экран ---
