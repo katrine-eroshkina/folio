@@ -61,7 +61,7 @@ if (caseRoot) {
     '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   let box;
   const closeLightbox = () => {
-    if (box) box.classList.remove("is-open");
+    if (box) box.classList.remove("is-open", "is-zoomed");
     document.body.style.overflow = "";
   };
   const openLightbox = (src) => {
@@ -74,8 +74,14 @@ if (caseRoot) {
         CLOSE_SVG +
         '</button><img alt="" />';
       box.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+      // клик по картинке — переключение «вписать ↔ натуральный размер» со скроллом
+      box.querySelector("img").addEventListener("click", () => {
+        box.classList.toggle("is-zoomed");
+        box.scrollTo(0, 0);
+      });
       document.body.appendChild(box);
     }
+    box.classList.remove("is-zoomed");
     box.querySelector("img").src = src;
     box.classList.add("is-open");
     document.body.style.overflow = "hidden";

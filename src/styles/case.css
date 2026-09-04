@@ -217,6 +217,16 @@
   max-width: calc(100vw - 80px);
   max-height: calc(100dvh - 104px);
   object-fit: contain;
+  cursor: zoom-in;
+}
+/* клик по картинке → натуральный размер, лайтбокс скроллится от левого верхнего угла */
+.lightbox.is-zoomed {
+  place-items: start;
+}
+.lightbox.is-zoomed img {
+  max-width: 2400px;
+  max-height: none;
+  cursor: zoom-out;
 }
 .lightbox-close {
   position: fixed;
