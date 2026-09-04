@@ -111,13 +111,13 @@ if (caseRoot) {
   const closeLightbox = () => {
     if (box) box.classList.remove("is-open", "is-zoomed");
     document.body.style.overflow = "";
-    if (lenis) lenis.start();
   };
   const openLightbox = (src) => {
     if (!src) return;
     if (!box) {
       box = document.createElement("div");
       box.className = "lightbox";
+      box.setAttribute("data-lenis-prevent", ""); // Lenis не перехватывает скролл над лайтбоксом
       box.innerHTML =
         '<button type="button" class="lightbox-close" aria-label="Закрыть">' +
         CLOSE_SVG +
@@ -134,7 +134,6 @@ if (caseRoot) {
     box.querySelector("img").src = src;
     box.classList.add("is-open");
     document.body.style.overflow = "hidden";
-    if (lenis) lenis.stop();
   };
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();
