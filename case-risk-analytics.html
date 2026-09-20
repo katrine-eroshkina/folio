@@ -8,8 +8,8 @@
   </head>
   <body>
     {{> analytics }}
-    <div class="case-page">
     {{> header }}
+    <div class="case-page">
 
     <main class="container case">
       <!-- ПОГРУЖЕНИЕ -->
@@ -91,10 +91,12 @@
 
         <div class="case-block case-block--16" data-tabs>
           <div class="tab-row">
+            <span class="tab-indicator" aria-hidden="true"></span>
             <button type="button" class="tab tab--active" data-tab="0">Главная «ДО»</button>
             <button type="button" class="tab" data-tab="1">User Flow «ДО»</button>
           </div>
-          <!-- пропорция рамки берётся с активной картинки в main.js (снимки разной формы) -->
+          <!-- рамка фиксированного размера на оба таба — картинки разных пропорций
+               вписываются внутрь (object-fit: contain), чтобы кадр не «скакал» -->
           <div class="media-frame" style="--ratio: 700 / 536">
             <img data-tab-panel="0" src="/src/img/case-risk-analytics/ux-audit.webp" alt="" loading="lazy" />
             <img data-tab-panel="1" src="/src/img/case-risk-analytics/ux-userflow.webp" alt="" loading="lazy" hidden />
@@ -115,19 +117,35 @@
           <p class="text case-p"><strong>Что&nbsp;сделала:</strong> обсудила свои выводы и&nbsp;гипотезы с&nbsp;PM, CPO и&nbsp;дизайн-лидом</p>
           <p class="text case-p"><strong>Почему:</strong> Нужно было понять, действительно ли&nbsp;это продуктовая проблема, а&nbsp;не&nbsp;ограничение системы: совпадает ли&nbsp;моё наблюдение с&nbsp;видением команды и&nbsp;стоит ли&nbsp;расширять задачу с&nbsp;визуального редизайна до&nbsp;пересмотра логики экрана</p>
           <div class="quote-grid">
-            <div class="quote-card">
+            <div class="quote-card quote-card--dashed">
+              <span class="dash-corner dash-corner--tl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--tr" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--bl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--br" aria-hidden="true"></span>
               <span class="heading-serif">Отдел продаж</span>
               <span class="text--sm text--muted">клиенты часто интересуются интеграциями и&nbsp;аналитическими модулями, им важно расширять возможности самого портала</span>
             </div>
-            <div class="quote-card">
+            <div class="quote-card quote-card--dashed">
+              <span class="dash-corner dash-corner--tl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--tr" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--bl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--br" aria-hidden="true"></span>
               <span class="heading-serif">Аналитики</span>
               <span class="text--sm text--muted">критические изменения можно заметить заранее. Все данные о&nbsp;риске уже есть, но&nbsp;сейчас их сложно быстро считать в&nbsp;связке</span>
             </div>
-            <div class="quote-card">
+            <div class="quote-card quote-card--dashed">
+              <span class="dash-corner dash-corner--tl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--tr" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--bl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--br" aria-hidden="true"></span>
               <span class="heading-serif">PM</span>
               <span class="text--sm text--muted">чем самостоятельнее пользователь управляет аккаунтом, тем меньше нагрузка на&nbsp;поддержку и&nbsp;выше качество опыта</span>
             </div>
-            <div class="quote-card">
+            <div class="quote-card quote-card--dashed">
+              <span class="dash-corner dash-corner--tl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--tr" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--bl" aria-hidden="true"></span>
+              <span class="dash-corner dash-corner--br" aria-hidden="true"></span>
               <span class="heading-serif">CPO</span>
               <span class="text--sm text--muted">удержание сильных юзеров напрямую влияет на&nbsp;репутацию и&nbsp;рост платформы&nbsp;— хороший опыт помогает привлекать новых</span>
             </div>

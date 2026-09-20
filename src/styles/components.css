@@ -5,7 +5,7 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
+  padding: 3px 8px 2px; /* +1px сверху для оптического выравнивания текста */
   background: var(--color-ink);
   color: var(--color-on-dark);
   font-size: var(--text-tag);
@@ -19,14 +19,25 @@
 }
 
 /* ---- Рамка под изображение/видео ----
-   Пропорции задаются per-use: style="--ratio: 700 / 483". */
+   Пропорции задаются per-use: style="--ratio: 700 / 483".
+   Обводка — не border, а ::after-оверлей поверх картинки. border вплотную
+   к object-fit:cover фото давал на разных сторонах субпиксельную
+   погрешность (то и дело читалось как 2px вместо 1px); ::after рисуется
+   поверх <img>, поэтому линия всегда ровно 1px, независимо от фото. */
 .media-frame {
   position: relative;
   width: 100%;
   aspect-ratio: var(--ratio, 700 / 420);
   background: var(--color-surface);
-  border: 1px solid var(--color-line);
   overflow: clip;
+}
+.media-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--color-line);
+  pointer-events: none;
 }
 .media-frame > img,
 .media-frame > video {
@@ -69,7 +80,6 @@
   top: 12px;
   left: 12px;
 }
-
 /* Вариант обложки «в рамке» (кейс 1): бейджи в потоке над картинкой,
    картинка с боковыми полями и прижата к низу рамки.
    32 по бокам, 20 между бейджами и картинкой, верхние углы 8 / нижние 0. */
@@ -81,22 +91,74 @@
   padding: 16px 32px 0; /* верх регулируется, бока 32, низ 0 (картинка к краю) */
   background: var(--color-surface);
   border: 1px solid var(--color-line);
-  border-radius: var(--radius-8) var(--radius-8) 0 0;
   overflow: clip;
 }
 .case-card-media--framed .tag-group {
   position: static;
 }
 .case-card-media--framed .media-frame {
-  border: 0;
   background: transparent;
-  border-radius: var(--radius-8) var(--radius-8) 0 0;
+}
+.case-card-media--framed .media-frame::after {
+  content: none;
 }
 
 .case-card-body {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+/* ---- Кнопка «Читать кейс» (стеклянная плашка поверх превью) ----
+   Не <button> — карточка кейса сама уже ссылка, вложенный интерактив
+   не нужен. Спрятана по умолчанию, появляется по центру превью только
+   на ховере — и только там, где ховер вообще есть (десктоп с мышью),
+   чтобы на тач-устройствах не залипала поверх картинки. */
+.liquid-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgb(245, 245, 245) 0%,
+    rgba(101, 104, 111, 0.39) 24%,
+    rgba(255, 255, 255, 0.75) 100%
+  );
+  box-shadow:
+    inset 0 4px 6.1px rgba(255, 255, 255, 0.23),
+    2px 23px 14px rgba(0, 0, 0, 0.02),
+    1px 10px 10px rgba(0, 0, 0, 0.03),
+    0 3px 6px rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  /* .is-btn-hover — ставит main.js: :hover сам не пересчитывается, если
+     курсор стоит на месте, а карточки уезжают под него скроллом колеса. */
+  .case-card:hover .liquid-btn,
+  .case-card.is-btn-hover .liquid-btn {
+    opacity: 1;
+  }
+}
+.liquid-btn-inner {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  color: rgb(61, 61, 61);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.46);
+  white-space: nowrap;
 }
 
 /* ---- Список с маркером-звёздочкой ---- */
@@ -138,8 +200,13 @@
 /* Картинка внутри упирается в низ карточки — убираем её нижнюю границу,
    чтобы не было двойной линии с рамкой карточки (как в макете). */
 .info-card .media-frame {
-  border-bottom: 0;
   flex: 1;
+}
+.info-card .media-frame::after {
+  box-shadow:
+    inset 0 1px 0 0 var(--color-line),
+    inset 1px 0 0 0 var(--color-line),
+    inset -1px 0 0 0 var(--color-line);
 }
 
 /* ---- Ряд логотипов 40×40 (бенчмарки) ---- */

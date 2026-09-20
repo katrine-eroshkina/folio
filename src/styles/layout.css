@@ -8,11 +8,14 @@
   margin-inline: auto;
 }
 
-/* ---- Белый контентный блок ---- */
+/* ---- Белый контентный блок ----
+   Скругление маленькое (radius-8): большое (было radius-40) давало щель
+   белого фона тела страницы в самой дуге угла — до края футера снизу
+   там ничего не подложено, поэтому чем радиус больше, тем шов заметнее. */
 .page {
   background: var(--color-bg);
-  border-bottom-left-radius: var(--radius-40);
-  border-bottom-right-radius: var(--radius-40);
+  border-bottom-left-radius: var(--radius-8);
+  border-bottom-right-radius: var(--radius-8);
   overflow: clip;
 }
 

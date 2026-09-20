@@ -51,8 +51,6 @@
   overflow: clip;
   background: var(--color-ink);
   color: var(--color-on-dark);
-  border-bottom-left-radius: var(--radius-8);
-  border-bottom-right-radius: var(--radius-8);
   padding-block: 60px;
 }
 .site-footer .container {

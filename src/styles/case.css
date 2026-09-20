@@ -90,25 +90,60 @@
   border-radius: var(--radius-16);
 }
 
-/* ---- Таб-переключатели «Главная ДО» / «User Flow ДО» ---- */
+/* ---- Тогл «Главная ДО» / «User Flow ДО» ----
+   Плашка-индикатор — отдельный span, ширину и сдвиг под активную кнопку
+   на каждый клик выставляет main.js (у кнопок разная длина текста). */
 .tab-row {
-  display: flex;
-  gap: var(--space-16);
+  position: relative;
+  align-self: center; /* .case-block вокруг — flex-start, центрируем только тогл */
+  display: inline-flex;
   align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--color-line);
+  border-radius: 999px;
+}
+.tab-indicator {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  bottom: 4px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  transition: transform 0.3s ease, width 0.3s ease;
 }
 .tab {
-  padding: 8px;
+  position: relative;
+  z-index: 1;
+  padding: 8px 16px;
   font-family: inherit;
   font-size: var(--text-sm);
   line-height: 18px;
-  background: var(--color-line);
+  background: transparent;
   color: var(--color-ink);
   border: 0;
+  border-radius: 999px;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 .tab--active {
-  background: var(--color-ink);
   color: var(--color-on-dark);
+}
+/* рамка у тогла — фиксированного размера (ratio задан в HTML), а не под
+   каждую картинку: иначе кадр «скакал» при переключении. Картинки разных
+   пропорций вписываются целиком, без обрезки (cover обрезал бы часть UI
+   на скриншоте), а position:absolute гарантирует, что обе картинки лежат
+   ровно в одном и том же боксе кадра, а не в потоке (где могла набежать
+   разница в пару px из-за display/line-height). */
+[data-tabs] .media-frame > img {
+  position: absolute;
+  inset: 0;
+  object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-indicator {
+    transition: none;
+  }
 }
 
 /* единственное исключение на сайте: маркер списка по верху (кейс 1, «Для этого я:») */
@@ -129,9 +164,13 @@
   display: inline-block;
   flex-shrink: 0;
   min-width: var(--stat-w, 1.9em);
-  /* звёздочка-иконка визуально ниже строчного бокса на ~2px —
-     опускаем число на столько же, чтобы иконка, число и текст были в линию */
-  margin-top: 2px;
+}
+/* звёздочка-иконка визуально ниже строчного бокса на ~2px — раньше это
+   компенсировали, опуская число, но тогда число уезжало от своего же
+   текста после него (на ~1px). Двигаем саму иконку — число и текст
+   остаются на одной линии друг с другом. */
+.marker-list--stat li::before {
+  margin-top: -2px;
 }
 
 /* ---- Сетка карточек 2×2 (цитаты команды / гипотезы / графики опроса) ---- */
@@ -160,8 +199,50 @@
 .quote-card--media {
   padding-bottom: 0;
 }
-.quote-card--media .media-frame {
-  border-bottom: 0;
+.quote-card--media .media-frame::after {
+  box-shadow:
+    inset 0 1px 0 0 var(--color-line),
+    inset 1px 0 0 0 var(--color-line),
+    inset -1px 0 0 0 var(--color-line);
+}
+
+/* ---- Карточки цитат без подложки, с пунктирными уголками ----
+   Модификатор, не трогает обычный .quote-card на других страницах.
+   Уголки — 4 отдельных span (не псевдоэлементы: их всего 2 на элемент,
+   а тут нужно 4 независимых уголка). */
+.quote-card--dashed {
+  position: relative;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+.quote-card--dashed .dash-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--color-line);
+  border-style: dashed;
+  pointer-events: none;
+}
+.quote-card--dashed .dash-corner--tl {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+.quote-card--dashed .dash-corner--tr {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+.quote-card--dashed .dash-corner--bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+.quote-card--dashed .dash-corner--br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
 }
 
 /* ---- Разворот картинки на весь экран ---- */

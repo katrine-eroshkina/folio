@@ -67,36 +67,38 @@ if (toTop) {
   });
 }
 
-// --- Табы «Главная ДО» / «User Flow ДО» (кейс 1) ---
+// --- Тогл «Главная ДО» / «User Flow ДО» (кейс 1) ---
 document.querySelectorAll("[data-tabs]").forEach((group) => {
   const tabs = [...group.querySelectorAll("[data-tab]")];
   const panels = [...group.querySelectorAll("[data-tab-panel]")];
+  const indicator = group.querySelector(".tab-indicator");
 
-  // рамка подстраивает пропорцию под показанную картинку (снимки разной формы)
-  const fitFrame = (panel) => {
-    if (panel.tagName !== "IMG") return;
-    const frame = panel.closest(".media-frame");
-    if (!frame) return;
-    const apply = () => {
-      if (panel.naturalWidth) {
-        frame.style.setProperty("--ratio", panel.naturalWidth + " / " + panel.naturalHeight);
-      }
-    };
-    panel.complete ? apply() : panel.addEventListener("load", apply, { once: true });
+  // сдвигает и растягивает плашку-индикатор под размер активной кнопки —
+  // у «Главная «ДО»» и «User Flow «ДО»» разная длина текста
+  const moveIndicator = (tab) => {
+    if (!indicator) return;
+    indicator.style.width = tab.offsetWidth + "px";
+    indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
   };
 
   const activate = (key) => {
-    tabs.forEach((t) => t.classList.toggle("tab--active", t.dataset.tab === key));
+    const active = tabs.find((t) => t.dataset.tab === key);
+    tabs.forEach((t) => t.classList.toggle("tab--active", t === active));
+    if (active) moveIndicator(active);
     panels.forEach((p) => {
       p.hidden = p.dataset.tabPanel !== key;
-      if (!p.hidden) fitFrame(p);
     });
   };
 
   tabs.forEach((tab) => tab.addEventListener("click", () => activate(tab.dataset.tab)));
 
   const initial = tabs.find((t) => t.classList.contains("tab--active")) || tabs[0];
-  if (initial) activate(initial.dataset.tab);
+  if (initial) {
+    // без transition на первый кадр — иначе плашка «прилетает» из угла при загрузке
+    if (indicator) indicator.style.transition = "none";
+    activate(initial.dataset.tab);
+    if (indicator) requestAnimationFrame(() => (indicator.style.transition = ""));
+  }
 });
 
 // --- Разворот картинок кейса на весь экран ---
@@ -221,5 +223,48 @@ if (document.querySelector(".case, .page")) {
     const gateFade = () => topFade.classList.toggle("is-hidden", window.scrollY < 40);
     window.addEventListener("scroll", gateFade, { passive: true });
     gateFade();
+  }
+}
+
+// --- Кнопка «Читать кейс»: чиним застревание при скролле колесом ---
+// :hover в браузере не пересчитывается, если курсор физически стоит
+// на месте — при скролле колесом карточки проезжают под ним, а hover
+// остаётся на прошлой. Следим за последней позицией мыши и на scroll
+// сами проверяем, что сейчас под курсором.
+{
+  const cards = document.querySelectorAll(".case-card");
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (cards.length && canHover) {
+    let mouseX = -1;
+    let mouseY = -1;
+    let hoveredCard = null;
+
+    const setHovered = (card) => {
+      if (card === hoveredCard) return;
+      if (hoveredCard) hoveredCard.classList.remove("is-btn-hover");
+      if (card) card.classList.add("is-btn-hover");
+      hoveredCard = card;
+    };
+
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        setHovered(e.target.closest(".case-card"));
+      },
+      { passive: true },
+    );
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (mouseX < 0) return;
+        const el = document.elementFromPoint(mouseX, mouseY);
+        setHovered(el ? el.closest(".case-card") : null);
+      },
+      { passive: true },
+    );
   }
 }
