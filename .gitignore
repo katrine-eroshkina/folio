@@ -3,3 +3,8 @@ dist
 .DS_Store
 Thumbs.db
 *.local
+
+# Claude Code — локальные служебные файлы, не часть сайта
+.agents/
+.claude/
+skills-lock.json
