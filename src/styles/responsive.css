@@ -78,6 +78,8 @@
 
   /* шапка кейса ниже — экономим вертикаль на маленьком экране */
   .site-header { padding-block: 16px; }
+  .case-header { padding-block: 12px; }
+  .case-header-btn { height: 36px; padding: 0 12px; }
 }
 
 /* ============ МЕЛКИЙ ТЕЛЕФОН  (≤ 400px) ============ */

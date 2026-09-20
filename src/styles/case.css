@@ -30,7 +30,10 @@
 
 /* абзац кейса; лид перед списком — medium */
 .case-p { max-width: 600px; }
-.case-p + .case-p { margin-top: 8px; }
+/* Между соседними абзацами — ровно 16 (как в макете). В flex-колонке
+   margin не схлопывается с gap, а суммируется, поэтому добавка = 16 минус gap блока. */
+.case-block > .case-p + .case-p { margin-top: 4px; }        /* gap 12 → 16 */
+.case-block--16 > .case-p + .case-p { margin-top: 0; }      /* gap 16 → 16 */
 .case-lead {
   max-width: 600px;
   font-weight: var(--weight-medium);
@@ -204,45 +207,6 @@
     inset 0 1px 0 0 var(--color-line),
     inset 1px 0 0 0 var(--color-line),
     inset -1px 0 0 0 var(--color-line);
-}
-
-/* ---- Карточки цитат без подложки, с пунктирными уголками ----
-   Модификатор, не трогает обычный .quote-card на других страницах.
-   Уголки — 4 отдельных span (не псевдоэлементы: их всего 2 на элемент,
-   а тут нужно 4 независимых уголка). */
-.quote-card--dashed {
-  position: relative;
-  background: none;
-  border: 0;
-  border-radius: 0;
-}
-.quote-card--dashed .dash-corner {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: var(--color-line);
-  border-style: dashed;
-  pointer-events: none;
-}
-.quote-card--dashed .dash-corner--tl {
-  top: 0;
-  left: 0;
-  border-width: 1px 0 0 1px;
-}
-.quote-card--dashed .dash-corner--tr {
-  top: 0;
-  right: 0;
-  border-width: 1px 1px 0 0;
-}
-.quote-card--dashed .dash-corner--bl {
-  bottom: 0;
-  left: 0;
-  border-width: 0 0 1px 1px;
-}
-.quote-card--dashed .dash-corner--br {
-  bottom: 0;
-  right: 0;
-  border-width: 0 1px 1px 0;
 }
 
 /* ---- Разворот картинки на весь экран ---- */

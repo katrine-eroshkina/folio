@@ -84,7 +84,7 @@
    картинка с боковыми полями и прижата к низу рамки.
    32 по бокам, 20 между бейджами и картинкой, верхние углы 8 / нижние 0. */
 .case-card-media--framed {
-  position: static;
+  position: relative; /* якорь для .liquid-btn — центр по всей серой плашке, а не по картинке */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -109,16 +109,10 @@
   gap: var(--space-4);
 }
 
-/* ---- Кнопка «Читать кейс» (стеклянная плашка поверх превью) ----
-   Не <button> — карточка кейса сама уже ссылка, вложенный интерактив
-   не нужен. Спрятана по умолчанию, появляется по центру превью только
-   на ховере — и только там, где ховер вообще есть (десктоп с мышью),
-   чтобы на тач-устройствах не залипала поверх картинки. */
-.liquid-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
+/* ---- Стеклянная кнопка (.glass-btn) ----
+   Общий вид: градиентная рамка 2px + полупрозрачная белая заливка внутри.
+   Используется для «Читать кейс» на превью и для «На главную» в шапке кейсов. */
+.glass-btn {
   display: inline-flex;
   padding: 2px;
   border-radius: 999px;
@@ -133,18 +127,8 @@
     2px 23px 14px rgba(0, 0, 0, 0.02),
     1px 10px 10px rgba(0, 0, 0, 0.03),
     0 3px 6px rgba(0, 0, 0, 0.03);
-  opacity: 0;
-  transition: opacity 0.2s ease;
 }
-@media (hover: hover) and (pointer: fine) {
-  /* .is-btn-hover — ставит main.js: :hover сам не пересчитывается, если
-     курсор стоит на месте, а карточки уезжают под него скроллом колеса. */
-  .case-card:hover .liquid-btn,
-  .case-card.is-btn-hover .liquid-btn {
-    opacity: 1;
-  }
-}
-.liquid-btn-inner {
+.glass-btn-inner {
   display: flex;
   align-items: center;
   padding: 8px 20px;
@@ -159,6 +143,28 @@
   letter-spacing: -0.05em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.46);
   white-space: nowrap;
+}
+
+/* ---- «Читать кейс» (стеклянная плашка поверх превью) ----
+   Не <button> — карточка кейса сама уже ссылка, вложенный интерактив
+   не нужен. Спрятана по умолчанию, появляется по центру превью только
+   на ховере — и только там, где ховер вообще есть (десктоп с мышью),
+   чтобы на тач-устройствах не залипала поверх картинки. */
+.liquid-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  /* .is-btn-hover — ставит main.js: :hover сам не пересчитывается, если
+     курсор стоит на месте, а карточки уезжают под него скроллом колеса. */
+  .case-card:hover .liquid-btn,
+  .case-card.is-btn-hover .liquid-btn {
+    opacity: 1;
+  }
 }
 
 /* ---- Список с маркером-звёздочкой ---- */

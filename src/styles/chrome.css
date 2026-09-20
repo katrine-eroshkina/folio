@@ -37,6 +37,366 @@
   border: 1px solid var(--color-line);
 }
 
+/* ---- Шапка кейсов (новая): «На главную» слева, «Связаться» справа ----
+   Ширина — колонка кейса (класс .container в разметке), как у прежней шапки.
+   Подложка с плавным фейдом — псевдоэлемент ::before ниже. Старый
+   .site-header оставлен только для ui-kit.html. */
+.case-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+/* Белая подложка: сплошная на всю высоту шапки (кнопки не «прилипают» к краю
+   фейда), а затухание идёт ниже — на --header-fade px за нижним краем. */
+.case-header::before {
+  --header-fade: 44px;
+  content: "";
+  position: absolute;
+  inset: 0 0 calc(-1 * var(--header-fade)) 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    var(--color-bg) calc(100% - var(--header-fade)),
+    color-mix(in srgb, var(--color-bg) 55%, transparent) calc(100% - var(--header-fade) * 0.4),
+    transparent
+  );
+}
+.case-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  cursor: pointer;
+}
+.case-header-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+/* «На главную» — стеклянная кнопка (.glass-btn в components.css), размер под 38px */
+.case-return .glass-btn-inner {
+  gap: 8px;
+  height: 34px;
+  padding: 0 16px;
+}
+.case-return svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+/* «Связаться»: тёмная плашка-кнопка на клике РАСТЁТ в карточку с контактами
+   (morph по width/height с лёгким пружинным перелётом), подпись кнопки
+   растворяется, строки контактов проявляются по очереди.
+   Плашка — отдельный span .case-contact-bg под кнопкой; сама кнопка
+   прозрачная, только текст. Размеры карточки — переменные ниже. */
+.case-contact {
+  --cc-w: min(300px, calc(100vw - 2 * var(--page-pad)));
+  --cc-head: 34px; /* строка «Связаться ×» */
+  --cc-row: 52px; /* строка контакта */
+  --cc-pad: 6px;
+  --cc-gap: 2px;
+  --cc-h: calc(2 * var(--cc-pad) + var(--cc-head) + 3 * var(--cc-row) + 3 * var(--cc-gap));
+  --cc-spring: cubic-bezier(0.34, 1.12, 0.64, 1);
+  position: relative;
+  transition: scale 0.15s ease;
+}
+/* нажатие — плашка чуть «продавливается» (active:scale-95 из примера) */
+.case-contact:not(.is-open):active {
+  scale: 0.98;
+}
+/* Металл (стиль MetalButton, вариант silver): снаружи серебряная рамка 4px —
+   радиальный градиент из чередующихся серых полос (::before), внутри тёмная
+   вставка с мягкими бликами по краям (::after). Скругление — капсула, а не 14px
+   из примера, чтобы совпадать с соседними кнопками. Под ними — тёмная плашка:
+   при раскрытии рамка гаснет, вставка растёт до краёв и становится картой. */
+.case-contact-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 19px; /* капсула (половина высоты 38), чтобы плавно переходить в 14 */
+  background: #15161a;
+  box-shadow:
+    0 9px 4px rgba(0, 0, 0, 0.04),
+    0 5px 3px rgba(0, 0, 0, 0.13),
+    0 2px 2px rgba(0, 0, 0, 0.23),
+    0 1px 1px rgba(0, 0, 0, 0.26);
+  transition:
+    width 0.38s var(--cc-spring) 0.06s,
+    height 0.38s var(--cc-spring) 0.06s,
+    border-radius 0.38s var(--cc-spring) 0.06s;
+}
+.case-contact-bg::before,
+.case-contact-bg::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+/* серебряная рамка + едва заметная «шлифовка» (overlay) */
+.case-contact-bg::before {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-radial-gradient(
+      circle at 25% 40%,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 2px,
+      transparent 6px
+    ),
+    radial-gradient(
+      100% 100% at 0% 0%,
+      #8b8b8b 0%,
+      #e2e1e1 21.88%,
+      #8b8b8b 42.19%,
+      #e2e1e1 60.94%,
+      #8b8b8b 79.17%,
+      #e2e1e1 100%
+    );
+  background-blend-mode: overlay, normal;
+  transition: opacity 0.2s ease;
+}
+/* тёмная вставка: отступ 4px от края, растёт до 0 при раскрытии */
+.case-contact-bg::after {
+  inset: 4px;
+  border-radius: 15px; /* 19 − 4 */
+  background: linear-gradient(135deg, #1f2025 0%, #15161a 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.06),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  transition:
+    inset 0.38s var(--cc-spring) 0.06s,
+    border-radius 0.38s var(--cc-spring) 0.06s;
+}
+.case-contact.is-open .case-contact-bg {
+  width: var(--cc-w);
+  height: var(--cc-h);
+  border-radius: 14px;
+}
+.case-contact.is-open .case-contact-bg::before {
+  opacity: 0;
+}
+.case-contact.is-open .case-contact-bg::after {
+  inset: 0;
+  border-radius: 14px;
+}
+
+/* Вариант «по центру» (главная): плашка и карточка растут от центра кнопки,
+   а не от правого края, и лежат поверх соседних блоков страницы. */
+.case-contact--center {
+  z-index: 5;
+}
+.case-contact--center .case-contact-bg,
+.case-contact--center .case-contact-panel {
+  right: auto;
+  left: 50%;
+  translate: -50% 0;
+}
+
+/* сама кнопка: прозрачная, лежит поверх плашки; при открытии подпись тает */
+.case-header-btn--contact {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  color: #f4f4f5;
+  transition:
+    opacity 0.12s ease,
+    filter 0.12s ease;
+}
+.case-contact.is-open .case-header-btn--contact {
+  opacity: 0;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* карточка с контактами поверх плашки */
+.case-contact-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cc-gap);
+  width: var(--cc-w);
+  padding: var(--cc-pad);
+  color: var(--color-on-dark);
+  pointer-events: none;
+}
+.case-contact.is-open .case-contact-panel {
+  pointer-events: auto;
+}
+.cc-item {
+  opacity: 0;
+  filter: blur(3px);
+  translate: 0 4px;
+  transition:
+    opacity 0.12s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.12s cubic-bezier(0.23, 1, 0.32, 1),
+    translate 0.12s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.case-contact.is-open .cc-item {
+  opacity: 1;
+  filter: none;
+  translate: 0 0;
+  transition-delay: calc(0.14s + var(--i, 0) * 0.045s); /* появляются по очереди после роста плашки */
+}
+.cc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--cc-head);
+  padding-left: 12px;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+}
+.cc-close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.cc-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-on-dark);
+}
+.cc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: var(--cc-row);
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-on-dark);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+.cc-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.cc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cc-label {
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.cc-value {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: var(--weight-medium);
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cc-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.cc-close svg {
+  width: 14px;
+  height: 14px;
+}
+.cc-row:hover .cc-icon {
+  color: var(--color-on-dark);
+}
+
+/* ---- Оглавление слева (кейсы, широкий экран) ----
+   Разметку собирает main.js из заголовков разделов. Активный пункт — тёмный,
+   с длинной чертой; остальные серые. Между пунктами — мелкие засечки. */
+.toc {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 15;
+  display: none;
+}
+@media (min-width: 1200px) {
+  .toc {
+    display: block;
+  }
+}
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.toc-item + .toc-item::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 11px;
+  color: color-mix(in srgb, var(--color-muted) 55%, transparent);
+  background:
+    linear-gradient(currentColor, currentColor) 0 2px / 100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) 0 8px / 100% 1px no-repeat;
+}
+.toc-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 16px;
+  font-size: var(--text-sm);
+  line-height: 16px;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+.toc-tick {
+  flex-shrink: 0;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.toc-label {
+  /* длинные названия не должны заезжать на колонку кейса */
+  max-width: min(220px, calc((100vw - var(--container)) / 2 - 92px));
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.toc-link:hover {
+  color: var(--color-ink);
+}
+.toc-link:hover .toc-tick {
+  width: 22px;
+}
+.toc-link.is-active {
+  color: var(--color-ink);
+}
+.toc-link.is-active .toc-tick {
+  width: 28px;
+}
+
 /* ---- Навигация «предыдущий / следующий кейс» ---- */
 .case-nav {
   display: flex;
