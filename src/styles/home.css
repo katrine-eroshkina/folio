@@ -45,7 +45,24 @@
 }
 .hero-avatar {
   position: relative;
+  isolation: isolate; /* кольцо ::before уходит под картинку, но не под фон страницы */
   width: 247px;
+}
+/* Бордер круга с фото. Аватар — одна плоская картинка (фото + хром-завитки), поэтому
+   кольцо рисуем отдельным кругом ПОД ней: он ровно по размеру фото, видна только
+   обводка снаружи, а завитки остаются поверх. Размер и центр — в долях картинки. */
+.hero-avatar::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50.35%;
+  top: 49.96%;
+  width: 51.7%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--color-line);
+  pointer-events: none;
 }
 .hero-typing {
   position: absolute;

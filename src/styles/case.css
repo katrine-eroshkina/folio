@@ -30,10 +30,10 @@
 
 /* абзац кейса; лид перед списком — medium */
 .case-p { max-width: 600px; }
-/* Между соседними абзацами — ровно 16 (как в макете). В flex-колонке
-   margin не схлопывается с gap, а суммируется, поэтому добавка = 16 минус gap блока. */
-.case-block > .case-p + .case-p { margin-top: 4px; }        /* gap 12 → 16 */
-.case-block--16 > .case-p + .case-p { margin-top: 0; }      /* gap 16 → 16 */
+/* Между соседними абзацами — ровно 12. В обычном блоке это уже gap; в блоках и секциях
+   с gap 16 margin не схлопывается с gap, а суммируется, поэтому вычитаем 4. */
+.case-block--16 > .case-p + .case-p,
+.case-section--16 > .case-p + .case-p { margin-top: calc(var(--space-12) - var(--space-16)); }
 .case-lead {
   max-width: 600px;
   font-weight: var(--weight-medium);

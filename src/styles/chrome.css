@@ -83,16 +83,16 @@
   height: 14px;
   flex-shrink: 0;
 }
-/* «На главную» — стеклянная кнопка (.glass-btn в components.css), размер под 38px */
-.case-return .glass-btn-inner {
-  gap: 8px;
-  height: 34px;
-  padding: 0 16px;
+/* «На главную» — ghost-кнопка: фон появляется только на ховере (десктоп) */
+.case-header-btn--return {
+  background: transparent;
+  color: var(--color-ink);
+  transition: background-color 0.15s ease;
 }
-.case-return svg {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
+@media (hover: hover) and (pointer: fine) {
+  .case-header-btn--return:hover {
+    background: var(--color-line);
+  }
 }
 /* «Связаться»: тёмная плашка-кнопка на клике РАСТЁТ в карточку с контактами
    (morph по width/height с лёгким пружинным перелётом), подпись кнопки
@@ -114,11 +114,8 @@
 .case-contact:not(.is-open):active {
   scale: 0.98;
 }
-/* Металл (стиль MetalButton, вариант silver): снаружи серебряная рамка 4px —
-   радиальный градиент из чередующихся серых полос (::before), внутри тёмная
-   вставка с мягкими бликами по краям (::after). Скругление — капсула, а не 14px
-   из примера, чтобы совпадать с соседними кнопками. Под ними — тёмная плашка:
-   при раскрытии рамка гаснет, вставка растёт до краёв и становится картой. */
+/* Плашка под кнопкой: плоская чёрная капсула (19px = половина высоты 38, чтобы
+   плавно переходить в 14 при раскрытии). Плоская, без тени и без смены цвета на ховере. */
 .case-contact-bg {
   position: absolute;
   top: 0;
@@ -126,70 +123,16 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  border-radius: 19px; /* капсула (половина высоты 38), чтобы плавно переходить в 14 */
-  background: #15161a;
-  box-shadow:
-    0 9px 4px rgba(0, 0, 0, 0.04),
-    0 5px 3px rgba(0, 0, 0, 0.13),
-    0 2px 2px rgba(0, 0, 0, 0.23),
-    0 1px 1px rgba(0, 0, 0, 0.26);
+  border-radius: 19px;
+  background: var(--color-ink);
   transition:
     width 0.38s var(--cc-spring) 0.06s,
     height 0.38s var(--cc-spring) 0.06s,
     border-radius 0.38s var(--cc-spring) 0.06s;
 }
-.case-contact-bg::before,
-.case-contact-bg::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-/* серебряная рамка + едва заметная «шлифовка» (overlay) */
-.case-contact-bg::before {
-  inset: 0;
-  border-radius: inherit;
-  background:
-    repeating-radial-gradient(
-      circle at 25% 40%,
-      rgba(255, 255, 255, 0.08) 0,
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 2px,
-      transparent 6px
-    ),
-    radial-gradient(
-      100% 100% at 0% 0%,
-      #8b8b8b 0%,
-      #e2e1e1 21.88%,
-      #8b8b8b 42.19%,
-      #e2e1e1 60.94%,
-      #8b8b8b 79.17%,
-      #e2e1e1 100%
-    );
-  background-blend-mode: overlay, normal;
-  transition: opacity 0.2s ease;
-}
-/* тёмная вставка: отступ 4px от края, растёт до 0 при раскрытии */
-.case-contact-bg::after {
-  inset: 4px;
-  border-radius: 15px; /* 19 − 4 */
-  background: linear-gradient(135deg, #1f2025 0%, #15161a 100%);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.06),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
-  transition:
-    inset 0.38s var(--cc-spring) 0.06s,
-    border-radius 0.38s var(--cc-spring) 0.06s;
-}
 .case-contact.is-open .case-contact-bg {
   width: var(--cc-w);
   height: var(--cc-h);
-  border-radius: 14px;
-}
-.case-contact.is-open .case-contact-bg::before {
-  opacity: 0;
-}
-.case-contact.is-open .case-contact-bg::after {
-  inset: 0;
   border-radius: 14px;
 }
 
@@ -210,7 +153,7 @@
   position: relative;
   z-index: 2;
   background: transparent;
-  color: #f4f4f5;
+  color: var(--color-on-dark);
   transition:
     opacity 0.12s ease,
     filter 0.12s ease;
@@ -398,11 +341,23 @@
 }
 
 /* ---- Навигация «предыдущий / следующий кейс» ---- */
+/* кнопки рядом по центру страницы (одна — просто по центру) */
 .case-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: var(--space-16);
   padding: 16px 0 60px; /* 60px до футера */
+}
+/* «Следующий кейс» — чёрная капсула, как «Связаться»; «Предыдущий» — ghost, как «На главную»
+   (.case-header-btn--return): та же логика, что и в шапке */
+.case-nav-btn {
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+  transition: scale 0.15s ease;
+}
+.case-nav-btn:active {
+  scale: 0.98;
 }
 
 /* ---- Футер (главная) ---- */
