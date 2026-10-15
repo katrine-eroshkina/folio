@@ -15,13 +15,30 @@
       <!-- ПОГРУЖЕНИЕ -->
       <section class="case-section">
         <div class="case-hero">
-          <h1 class="heading-display">«Почему меня заблокировали?» Как&nbsp;я&nbsp;упростила понимание риск-правил</h1>
+          <h1 class="heading-display">«Почему меня заблокировали?» Как&nbsp;я&nbsp;превратила редизайн главной в&nbsp;навигацию по&nbsp;риску</h1>
           <p class="text case-hero-lead">
-            В&nbsp;продукте уже было много аналитики, но&nbsp;она не&nbsp;помогала пользователю ответить
-            на&nbsp;главный вопрос: «Что&nbsp;сейчас с&nbsp;лимитами аккаунта?» Я&nbsp;исследовала, где именно
-            интерфейс теряет этот контекст, и&nbsp;переработала сценарий так, чтобы нужные
-            сигналы появлялись в&nbsp;нужный момент
+            Переформулировала задачу визуального обновления в&nbsp;продуктовую: сделала
+            логику риска видимой, чтобы трейдер замечал угрозу блокировки до&nbsp;нарушения.
+            Решение прошло пилот и&nbsp;стало частью продаж платформы
           </p>
+          <div class="metric-row">
+            <div class="quote-card quote-card--metric">
+              <span class="heading-sans">3&nbsp;→ 1&nbsp;шаг</span>
+              <span class="text--sm text--muted">До&nbsp;корректировки стратегии</span>
+            </div>
+            <div class="quote-card quote-card--metric">
+              <span class="heading-sans">37,6% → 33,2%</span>
+              <span class="text--sm text--muted">Доля блокировок за&nbsp;2-й месяц</span>
+            </div>
+            <div class="quote-card quote-card--metric">
+              <span class="heading-sans">18% → 23%</span>
+              <span class="text--sm text--muted">Повторная покупка после</span>
+            </div>
+            <div class="quote-card quote-card--metric">
+              <span class="heading-sans">x&nbsp;3,5 раза</span>
+              <span class="text--sm text--muted">Быстрее реакция на&nbsp;риск (медиана)</span>
+            </div>
+          </div>
           <div class="media-frame" style="--ratio: 1272 / 732">
             <img src="/src/img/case-risk-analytics/hero.webp" alt="" loading="lazy" />
           </div>
@@ -35,36 +52,36 @@
         <div class="case-block">
           <h3 class="heading-sans">Компания</h3>
           <p class="text case-p">
-            Axcera&nbsp;— B2B-платформа, объединяющая клиентский портал, CRM и&nbsp;торговые
-            интеграции с&nbsp;биржами для&nbsp;проп-фирм, признанная в&nbsp;2025&nbsp;году «Лучшим
-            поставщиком софта для&nbsp;аналитики со&nbsp;сделками»
+            Axcera&nbsp;— B2B-платформа для&nbsp;финтех компаний в&nbsp;5&nbsp;странах, объединяющая
+            клиентский портал, CRM и&nbsp;торговые интеграции с&nbsp;биржами, признанная
+            в&nbsp;2025&nbsp;году «Лучшим поставщиком софта для&nbsp;аналитики со&nbsp;сделками»
           </p>
         </div>
 
         <div class="case-block">
           <h3 class="heading-sans">Проблема</h3>
           <p class="text case-p">
-            Пользователям приходилось самостоятельно разбираться в&nbsp;массиве метрик,
-            выбирать нужные показатели и&nbsp;рассчитывать запас до&nbsp;лимитов, чтобы понять,
-            насколько безопасно продолжать торговлю. Из-за этого риск оставался на
-            стороне пользователя, а&nbsp;блокировка часто становилась «неожиданной»
+            Пользователи считали лимиты в&nbsp;уме и&nbsp;узнавали о&nbsp;нарушениях только
+            в&nbsp;момент блокировки. В&nbsp;домене баны неизбежны, но&nbsp;неожиданная блокировка
+            уводит клиента к&nbsp;конкурентам, а&nbsp;понятная конвертирует в&nbsp;повторную покупку
           </p>
         </div>
 
         <div class="case-block">
           <h3 class="heading-sans">Задача</h3>
           <p class="text case-p">
-            Помочь вовремя замечать риск нарушения и&nbsp;понимать причины блокировки
+            Сделать блокировки предсказуемыми: пользователь должен замечать риск
+            до&nbsp;нарушения, а&nbsp;если оно случилось, то&nbsp;понимать причину без&nbsp;поддержки
           </p>
         </div>
 
         <div class="case-block">
           <h3 class="heading-sans">Критерии успеха</h3>
           <ul class="marker-list">
-            <li class="text">Снижение количества breach по&nbsp;Daily Loss / Max Loss</li>
-            <li class="text">Увеличение % аккаунтов, вышедших из&nbsp;риска без&nbsp;блокировки</li>
             <li class="text">Снижение % аккаунтов, достигших блокировки сразу после входа в&nbsp;риск</li>
-            <li class="text">Значительное увеличение среднего времени между Warning и&nbsp;Breach</li>
+            <li class="text">Ускорить реакцию пользователя на&nbsp;риск</li>
+            <li class="text">Увеличить долю пользователей, которые возвращаются после блокировки</li>
+            <li class="text">Сократить обращения в&nbsp;поддержку о&nbsp;причинах блокировки</li>
           </ul>
         </div>
       </section>
@@ -74,18 +91,26 @@
         <h2 class="heading-display">Исследование</h2>
 
         <div class="case-block">
-          <h3 class="heading-sans">С&nbsp;чего всё начиналось</h3>
+          <h3 class="heading-sans">С&nbsp;чего начиналось</h3>
           <p class="text case-p">
-            Первоначально это выглядело как&nbsp;обычная задача по&nbsp;улучшению интерфейса.
-            Однако, во&nbsp;время работы я&nbsp;начала сомневаться, что&nbsp;визуальный редизайн сам по
-            себе сможет повлиять на&nbsp;результат, ради которого запускались изменения
+            Изначально задача выглядела как&nbsp;обычный редизайн, но&nbsp;я&nbsp;усомнилась,
+            что&nbsp;одних визуальных изменений достаточно под&nbsp;задачи клиента
           </p>
+          <p class="text case-p">
+            Прежде чем&nbsp;менять интерфейс, я&nbsp;определила роль главной страницы. Это
+            первый экран, который пользователь видит при&nbsp;входе, поэтому портал нужен
+            пользователю, чтобы подготовиться к&nbsp;работе и&nbsp;оценить результаты
+          </p>
+          <ul class="marker-list">
+            <li class="text">Что сейчас с&nbsp;моими аккаунтами?</li>
+            <li class="text">Что требует моего внимания в&nbsp;первую очередь?</li>
+          </ul>
         </div>
 
         <div class="case-block">
-          <h3 class="heading-sans">UX аудит</h3>
-          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> Сфокусировалась на&nbsp;точках до&nbsp;и&nbsp;после совершения сделки</p>
-          <p class="text case-p"><strong>Почему:</strong> Торговля происходила во&nbsp;внешнем терминале (MetaTrader), поэтому зоной нашего влияния был только клиентский портал&nbsp;— этап подготовки к&nbsp;торговле и&nbsp;анализ результатов</p>
+          <h3 class="heading-sans">UX аудит текущих порталов</h3>
+          <p class="text case-p"><strong>Что&nbsp;сделала:</strong> Сфокусировалась на&nbsp;точках до&nbsp;и&nbsp;после совершения сделки и&nbsp;разобрала, как&nbsp;пользователь узнаёт состояние аккаунта</p>
+          <p class="text case-p"><strong>Почему:</strong> Сама торговля идёт во&nbsp;внешнем терминале, поэтому зоной влияния был только портал аналитики: подготовка к&nbsp;сделкам и&nbsp;разбор результатов</p>
           <p class="text case-p"><strong>Выявленная проблема:</strong> Текущий интерфейс заставляет пользователя сначала совершить действие, а&nbsp;уже потом разбираться в&nbsp;его последствиях</p>
         </div>
 
@@ -106,14 +131,13 @@
         <div class="case-block">
           <h3 class="heading-sans">Вывод</h3>
           <p class="text case-p">
-            Во&nbsp;всех трёх точках пользователь сам интерпретировал риск вместо понятных
-            сигналов от&nbsp;интерфейса. Возникает вопрос: почему главный экран не&nbsp;помогает
-            выбрать аккаунт, где нужно срочно менять стратегию?
+            Главная не&nbsp;выполняет свою задачу. Пользователь не&nbsp;видит риск блокировки
+            заранее и&nbsp;не&nbsp;понимает её&nbsp;причину постфактум
           </p>
         </div>
 
         <div class="case-block case-block--16">
-          <h3 class="heading-sans">Валидирую гипотезу с&nbsp;командой</h3>
+          <h3 class="heading-sans">Валидирую проблему с&nbsp;командой</h3>
           <p class="text case-p"><strong>Что&nbsp;сделала:</strong> обсудила свои выводы и&nbsp;гипотезы с&nbsp;PM, CPO и&nbsp;дизайн-лидом</p>
           <p class="text case-p"><strong>Почему:</strong> Нужно было понять, действительно ли&nbsp;это продуктовая проблема, а&nbsp;не&nbsp;ограничение системы: совпадает ли&nbsp;моё наблюдение с&nbsp;видением команды и&nbsp;стоит ли&nbsp;расширять задачу с&nbsp;визуального редизайна до&nbsp;пересмотра логики экрана</p>
           <div class="quote-grid">
@@ -131,28 +155,31 @@
             </div>
             <div class="quote-card">
               <span class="heading-serif">CPO</span>
-              <span class="text--sm text--muted">удержание сильных юзеров напрямую влияет на&nbsp;репутацию и&nbsp;рост платформы&nbsp;— хороший опыт помогает привлекать новых</span>
+              <span class="text--sm text--muted">хороший опыт пользователей напрямую влияет на&nbsp;репутацию и&nbsp;рост платформы&nbsp;— помогает привлекать новых и&nbsp;удерживать старых</span>
             </div>
           </div>
-          <p class="text case-p"><strong>Вывод:</strong> это подтвердило, что&nbsp;проблема реально влияет на&nbsp;бизнес и&nbsp;улучшение главного экрана может стать возможностью сделать управление рисками более понятным и&nbsp;эффективным для&nbsp;клиентов</p>
+          <p class="text case-p"><strong>Вывод:</strong> это подтвердило, что&nbsp;проблема влияет на&nbsp;бизнес, а&nbsp;данные для&nbsp;решения уже есть, не&nbsp;хватает интерфейса. Команда поддержала расширение задачи</p>
         </div>
 
         <div class="case-block case-block--16">
-          <h3 class="heading-sans">Приоритизирую информацию</h3>
+          <h3 class="heading-sans">Что болит у&nbsp;сообщества и&nbsp;что говорят данные?</h3>
           <p class="text case-p">
             Дальше я&nbsp;решила проверить, какая информация действительно должна появляться
             на&nbsp;главном экране, а&nbsp;какую лучше оставить внутри подробной аналитики
           </p>
           <p class="text case-lead">Для&nbsp;этого я:</p>
           <ul class="marker-list marker-list--top">
-            <li class="text">изучила обратную связь от&nbsp;PM, продаж, аналитиков и&nbsp;CPO, провела с&nbsp;ними рабочие сессии;</li>
-            <li class="text">проанализировала отзывы трейдеров на&nbsp;Reddit и&nbsp;YouTube, чтобы выявить повторяющиеся проблемы и&nbsp;паттерны;</li>
-            <li class="text">сравнила решения конкурентов</li>
+            <li class="text">Попросила у&nbsp;аналитиков выгрузку по&nbsp;блокировкам;</li>
+            <li class="text">проанализировала отзывы в&nbsp;открытых обсуждениях пользователей, чтобы выявить повторяющиеся проблемы и&nbsp;паттерны;</li>
           </ul>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Гипотезы</h3>
           <div class="quote-grid">
             <div class="quote-card">
-              <span class="heading-serif">Нулевая Гипотеза</span>
-              <span class="text--sm text--muted">Если дать понять в&nbsp;каком состоянии аккаунта до&nbsp;открытия подробной аналитики, то&nbsp;пользователь будет реже случайно нарушать правила</span>
+              <span class="heading-serif">Исходная гипотеза</span>
+              <span class="text--sm text--muted">если&nbsp;пользователь видит состояние аккаунта до&nbsp;открытия подробной аналитики, он&nbsp;реже нарушает правила случайно</span>
             </div>
             <div class="quote-card">
               <span class="heading-serif">Гипотеза&nbsp;1</span>
@@ -170,20 +197,25 @@
         </div>
 
         <div class="case-block case-block--16">
-          <h3 class="heading-sans">Первая итерация и&nbsp;результаты UX теста</h3>
+          <h3 class="heading-sans">Первая итерация и&nbsp;результаты теста</h3>
           <p class="text case-p">
-            На&nbsp;основе выводов сформулировала гипотезы и&nbsp;начала проверять их на&nbsp;первых
-            макетах
+            На&nbsp;основе выводов сформулировала гипотезы и&nbsp;начала проверять их
+            на&nbsp;первых макетах. Так&nbsp;же попробовала протестировать расширение
+            функционала до&nbsp;советов по&nbsp;торговле
           </p>
           <div class="media-frame" style="--ratio: 700 / 475">
             <img src="/src/img/case-risk-analytics/ux-test-1.webp" alt="" loading="lazy" />
           </div>
         </div>
 
-        <p class="text case-p"><strong>Вывод:</strong> Тесты показали, что&nbsp;потребности трейдеров сильно зависят от&nbsp;типа аккаунта. Универсальная карточка не&nbsp;могла одинаково хорошо работать для&nbsp;всех сценариев</p>
+        <div class="case-block">
+          <p class="text case-p"><strong>Вывод:</strong> Тесты показали, что&nbsp;потребности пользователей сильно зависят от&nbsp;типа аккаунта. Универсальная карточка не&nbsp;могла одинаково хорошо работать для&nbsp;всех сценариев</p>
+          <p class="text case-p"><strong>От&nbsp;Risk Guidance отказалась:</strong> Советы по&nbsp;торговле приводили к&nbsp;непредсказуемому влиянию на&nbsp;поведение</p>
+          <p class="text case-p"><strong>Сформировался принцип:</strong> Портал должен помогать увидеть риск, а&nbsp;не&nbsp;склонять принимать заранее прописанные решения</p>
+        </div>
 
         <div class="case-block case-block--16">
-          <h3 class="heading-sans">Новая гипотеза: адаптивная карточка</h3>
+          <h3 class="heading-sans">Вывод: Вывести все данные невозможно, нужна адаптивная карточка под&nbsp;каждую фазу аккаунта</h3>
           <div class="media-frame" style="--ratio: 700 / 262">
             <img src="/src/img/case-risk-analytics/adaptive-card.webp" alt="" loading="lazy" />
           </div>
@@ -193,6 +225,10 @@
       <!-- ФИНАЛЬНЫЕ МАКЕТЫ -->
       <section class="case-section" id="final">
         <h2 class="heading-display">Финальные макеты</h2>
+
+        <div class="case-block">
+          <p class="text case-p"><strong>Принцип концепции:</strong> интерфейс должен помочь увидеть момент, когда&nbsp;пора менять стратегию, но&nbsp;не&nbsp;подталкивать его к&nbsp;конкретному решению. Решение остаётся за&nbsp;пользователем</p>
+        </div>
 
         <div class="case-block case-block--16">
           <h3 class="heading-sans">Основная гипотеза</h3>
@@ -216,17 +252,18 @@
         </div>
 
         <div class="case-block">
-          <h3 class="heading-sans">Вывод и&nbsp;рефлексия</h3>
+          <h3 class="heading-sans">Результат</h3>
+          <p class="text case-p">Карточку запустили в&nbsp;пилот у&nbsp;клиента с&nbsp;~1&nbsp;тыс. аккаунтов на&nbsp;два месяца. После пилота она стала частью продаж портала и&nbsp;раскатывается на&nbsp;остальных клиентов платформы</p>
+          <p class="text case-p">В&nbsp;пилоте доля блокировок снизилась с&nbsp;37,6%&nbsp;до&nbsp;33,2%, а&nbsp;пользователи стали реагировать на&nbsp;риск в&nbsp;3,5&nbsp;раза быстрее: медианное время реакции сократилось с&nbsp;9&nbsp;часов до&nbsp;2,5&nbsp;часа</p>
+          <p class="text case-p">После блокировки снова покупали участие 18%&nbsp;→&nbsp;23%&nbsp;пользователей</p>
+        </div>
+
+        <div class="case-block">
+          <h3 class="heading-sans">Что дальше?</h3>
           <p class="text case-p">
-            Изначально решение было шире: я&nbsp;рассматривала сценарий с&nbsp;инсайтами и
-            торговыми советами, но&nbsp;отказалась от&nbsp;него из-за высокой сложности,
-            непредсказуемого влияния на&nbsp;поведение и&nbsp;риска принимать решения за&nbsp;трейдера.
-            В&nbsp;продукт вошла только навигация по&nbsp;риску.
-          </p>
-          <p class="text case-p">
-            Следующим шагом стало бы&nbsp;наблюдение за&nbsp;использованием и&nbsp;проверка
+            Следующим шагом стало&nbsp;бы наблюдение за&nbsp;использованием и&nbsp;проверка
             поведенческих гипотез&nbsp;— например, сценария «охлаждения» после серии
-            убыточных сделок.
+            убыточных сделок
           </p>
         </div>
       </section>

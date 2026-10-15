@@ -209,6 +209,27 @@
     inset -1px 0 0 0 var(--color-line);
 }
 
+/* ---- Ряд карточек с метрикой (кейс 1, hero) ----
+   Та же карточка, что и .quote-card (фон, рамка, скругление), но число
+   сверху — не Playfair-заголовок, а обычный .heading-sans, и зазор между
+   числом и подписью больше (12 вместо 4). В ряд, не 2×2. */
+.metric-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.quote-card--metric {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+/* расстояние до и после ряда карточек — в 2 раза больше обычного gap кейс-hero (16 → 32) */
+.case-hero-lead + .metric-row {
+  margin-top: var(--space-16);
+}
+.metric-row + .media-frame {
+  margin-top: var(--space-16);
+}
+
 /* ---- Разворот картинки на весь экран ---- */
 .case .media-frame {
   cursor: zoom-in;
