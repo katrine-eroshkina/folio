@@ -221,6 +221,8 @@
 .quote-card--metric {
   flex: 1 1 0%;
   min-width: 0;
+  align-items: center;
+  text-align: center;
 }
 /* расстояние до и после ряда карточек — в 2 раза больше обычного gap кейс-hero (16 → 32) */
 .case-hero-lead + .metric-row {
