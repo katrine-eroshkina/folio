@@ -109,6 +109,36 @@
   gap: var(--space-4);
 }
 
+/* ---- Пометка «ещё N кейса в работе» (вместо карточек-заглушек) ----
+   Сверху — обрезок настоящей карточки кейса: только теги, как на реальных
+   превью, дальше серый фон уходит в фейд. Под ним — плашка с количеством. */
+.soon-note-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 8px; /* отступ до «Обо мне» на 8px больше обычного gap секций */
+}
+.soon-teaser {
+  height: 110px; /* примерно четверть высоты обычного превью (ratio 700/420) */
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-bottom: none;
+  mask-image: linear-gradient(to bottom, #000, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+}
+.soon-note {
+  align-self: center;
+  padding: 6px 14px;
+  border: 1px dashed var(--color-line);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
 /* ---- Стеклянная кнопка (.glass-btn) ----
    Общий вид: градиентная рамка 2px + полупрозрачная белая заливка внутри.
    Используется для «Читать кейс» на превью и для «На главную» в шапке кейсов. */
